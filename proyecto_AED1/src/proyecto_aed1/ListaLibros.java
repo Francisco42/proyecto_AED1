@@ -10,5 +10,12 @@ package proyecto_aed1;
  * @author Francisco
  */
 public class ListaLibros {
+    private Libro primero;
+
+    public ListaLibros(Libro primero) {
+        this.primero = primero;
+    }
+    
+    public 
     
 }
