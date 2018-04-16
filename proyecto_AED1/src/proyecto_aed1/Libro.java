@@ -15,7 +15,6 @@ public class Libro {
     private final long isbn;
     private final short año;
     private final String genero;
-    private Libro siguiente;
 
     public Libro(String nombre, String autor, long isbn, short año, String genero) {
         this.nombre = nombre;
@@ -23,7 +22,6 @@ public class Libro {
         this.isbn = isbn;
         this.año = año;
         this.genero = genero;
-        this.siguiente = null;
     }
 
     public String getNombre() {
@@ -45,12 +43,9 @@ public class Libro {
     public String getGenero() {
         return genero;
     }
-
-    public Libro getSiguiente() {
-        return siguiente;
+    
+    @Override
+    public String toString() {
+        return "Libro: " + nombre + " Autor: " + autor + " Año: " + año + " Genero: " + genero + " ISBN: " + isbn;
     }
-
-    public void setSiguiente(Libro siguiente) {
-        this.siguiente = siguiente;
-    } 
 }

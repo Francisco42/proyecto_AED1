@@ -9,10 +9,10 @@ package proyecto_aed1;
  *
  * @author Francisco
  */
-public class ListaLibros {
+public class Lista {
     private Libro primero;
 
-    public ListaLibros(Libro primero) {
+    public Lista(Libro primero) {
         this.primero = primero;
     }
     
