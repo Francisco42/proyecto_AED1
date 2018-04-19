@@ -8,14 +8,49 @@ package proyecto_aed1;
 /**
  *
  * @author Francisco
+ * @param <T> - El tipo de los elemntos de la lista
  */
-public class Lista {
-    private Libro primero;
+public class Lista<T> implements ILista<T> {
+    private T[] arreglo;
 
-    public Lista(Libro primero) {
-        this.primero = primero;
+    public Lista() {
+        this.arreglo = (T[])new Object[100];
     }
-    
-    public 
+
+    @Override
+    public void insertar(T elemento) {
+        T aux = arreglo[0];
+        aux.getNombre();
+    }
+
+    @Override
+    public T buscar(Comparable clave) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean eliminar(Comparable clave) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String imprimir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String imprimir(String separador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int cantElementos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean esVacia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
