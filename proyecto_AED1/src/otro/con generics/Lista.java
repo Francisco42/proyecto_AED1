@@ -1,17 +1,13 @@
 package UT03.TA2;
 
-import proyecto_aed1.ILista;
-
 public class Lista<E> implements ILista<E> {
 
-    private INodo<E> primero;
+    private INodo<E>[] arreglo;
+    private int ultimoIndice;
 
     public Lista() {
-        primero = null;
-    }
-
-    public Lista(INodo<E> unNodo) {
-        this.primero = unNodo;
+        this.arreglo = (INodo<E>[])new Object[100];
+        this.ultimoIndice = 0;
     }
 
     public void insertar(INodo<E> unNodo) {
@@ -24,6 +20,36 @@ public class Lista<E> implements ILista<E> {
             }
             aux.setSiguiente(unNodo);
         }
+    }
+    
+    /**
+     * 
+     */
+    private void redimensionar() {
+        int nuevoLength = arreglo.length * 2;
+        INodo<E>[] nuevoArreglo = (INodo<E>[])new Object[nuevoLength];
+        for (int i = 0; i < arreglo.length; i++) {
+            nuevoArreglo[i] = arreglo[i];
+        }
+        arreglo = nuevoArreglo;
+    }
+    
+    /**
+     * 
+     * @param posicion - Posicion a partir de la cual se desplazan los elementos del arreglo (inclusive).
+     */
+    private void desplazarHaciaDerecha(int posicion) {
+        if (ultimoIndice == arreglo.length) {
+            redimensionar();
+        }
+        
+    }
+     /**
+      * 
+      * @param posicion 
+      */
+    private void desplazarHaciaIzquierda(int posicion) {
+        
     }
 
     public INodo<E> buscar(Comparable clave) {

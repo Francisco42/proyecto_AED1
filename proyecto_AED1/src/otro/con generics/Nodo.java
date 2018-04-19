@@ -3,55 +3,43 @@ package UT03.TA2;
 public class Nodo<T> implements INodo<T> {
 
     private final Comparable etiqueta;
-    private T dato;
-    private INodo<T> siguiente = null;
+    private final T dato;
 
     public Nodo(T dato, Comparable etiqueta) {
         this.dato = dato;
         this.etiqueta = etiqueta;
     }
 
+    @Override
     public T getDato() {
         return this.dato;
     }
 
-    public void setDato(T dato) {
-        this.dato = dato;
-
-    }
-
+    @Override
     public Comparable getEtiqueta() {
         return this.etiqueta;
     }
 
-    public void setSiguiente(INodo<T> nodo) {
-        this.siguiente = nodo;
-
-    }
-
-    public INodo<T> getSiguiente() {
-        return this.siguiente;
-    }
-
+    @Override
     public void imprimir() {
         System.out.println(dato.toString());
     }
 
-//    @Override
+    @Override
     public void imprimirEtiqueta() {
         System.out.println(this.etiqueta);
     }
 
-    public INodo<T> clonar() {
-        return new Nodo<T>(this.dato, this.etiqueta);
-    }
+//    public INodo<T> clonar() {
+//        return new Nodo<T>(this.dato, this.etiqueta);
+//    }
 
-//    @Override
+    @Override
     public boolean equals(INodo<T> unNodo) {
         return this.dato.equals(unNodo.getDato());
     }
 
-//    @Override
+    @Override
     public int compareTo(Comparable etiqueta) {
         return this.etiqueta.compareTo(etiqueta);
     }

@@ -10,27 +10,6 @@ public interface INodo<E> {
     public E getDato();
 
     /**
-     * Asigna un dato al nodo.
-     *
-     * @param dato a asignar.
-     */
-    public void setDato(E dato);
-
-    /**
-     * Asigna el siguiente nodo al nodo actual.
-     *
-     * @param nodo Nodo a asignar como siguiente.
-     */
-    public void setSiguiente(INodo<E> nodo);
-
-    /**
-     * Retorna el siguiente nodo al nodo actual.
-     *
-     * @return Siguiente nodo del actual
-     */
-    public INodo<E> getSiguiente();
-
-    /**
      * Imprime los datos del nodo
      */
     public void imprimir();
@@ -53,12 +32,6 @@ public interface INodo<E> {
      * @return etiqueta del nodo
      */
     public Comparable getEtiqueta();
-//	/**
-//	 *
-//	 * @param unNodo
-//	 * @return devueve -1 si this tiene una clave menor, 0 si son iguales, 1 si es mayor
-//	 */
-//	public int compareTo(INodo<E> unNodo);
 
     /**
      *
