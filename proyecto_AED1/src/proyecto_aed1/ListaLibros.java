@@ -6,7 +6,8 @@
 package proyecto_aed1;
 
 /**
- *
+ * Implementa el TDA Lista con el tipo especifico Libro.
+ * 
  * @author Francisco
  */
 public class ListaLibros extends Lista<Libro> {
@@ -19,9 +20,10 @@ public class ListaLibros extends Lista<Libro> {
     }
     
     /**
+     * Busca todos los libros que tienen un cierto nombre. 
      * 
-     * @param nombre
-     * @return 
+     * @param nombre - El nombre que se va a buscar.
+     * @return Lista con los libros que cumplen el criterio
      */
     public ListaLibros buscarPorNombre(String nombre) {
         ListaLibros listaAux = new ListaLibros();
@@ -38,9 +40,10 @@ public class ListaLibros extends Lista<Libro> {
     }
     
     /**
+     * Busca todos los libros escritos por un cierto autor. 
      * 
-     * @param autor
-     * @return 
+     * @param autor - El autor que se va a buscar.
+     * @return Lista con los libros que cumplen el criterio
      */
     public ListaLibros buscarPorAutor(String autor) {
         ListaLibros listaAux = new ListaLibros();
@@ -57,9 +60,10 @@ public class ListaLibros extends Lista<Libro> {
     }
     
     /**
+     * Busca todos los libros de un cierto género. 
      * 
-     * @param genero
-     * @return 
+     * @param genero - El género que se va a buscar.
+     * @return Lista con los libros que cumplen el criterio
      */
     public ListaLibros buscarPorGenero(String genero) {
         ListaLibros listaAux = new ListaLibros();
@@ -95,9 +99,10 @@ public class ListaLibros extends Lista<Libro> {
 //    }
     
     /**
+     * Busca todos los libros que se publicaron en un cierto año. 
      * 
-     * @param año
-     * @return 
+     * @param año - El año que se va a buscar.
+     * @return Lista con los libros que cumplen el criterio
      */
     public ListaLibros buscarPorAño(int año) {
         ListaLibros listaAux = new ListaLibros();
@@ -114,9 +119,10 @@ public class ListaLibros extends Lista<Libro> {
     }
     
     /**
+     * Busca todos los libros que se publicaron a partir de un cierto año. 
      * 
-     * @param año
-     * @return 
+     * @param año - El año a partir del cual se va a buscar.
+     * @return Lista con los libros que cumplen el criterio
      */
     public ListaLibros buscarAPartirDel(int año) {
         ListaLibros listaAux = new ListaLibros();

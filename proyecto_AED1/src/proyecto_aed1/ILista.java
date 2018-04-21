@@ -21,7 +21,7 @@ public interface ILista<E> {
      * Método encargado de eliminar un nodo cuya clave es la indicada.
      *
      * @param clave Clave del nodo a eliminar.
-     * @return True en caso de que la eliminación haya sido efectuada con �xito.
+     * @return True en caso de que la eliminación haya sido efectuada con éxito.
      */
     public boolean eliminar(Comparable clave);
 

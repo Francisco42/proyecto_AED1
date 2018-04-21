@@ -19,7 +19,6 @@ public class Nodo<T> implements INodo<T> {
     @Override
     public void setDato(T dato) {
         this.dato = dato;
-
     }
 
     @Override
@@ -30,7 +29,6 @@ public class Nodo<T> implements INodo<T> {
     @Override
     public void setSiguiente(INodo<T> nodo) {
         this.siguiente = nodo;
-
     }
 
     @Override

@@ -25,31 +25,64 @@ public class Libro {
         this.genero = genero;
         this.ventas = 0;
     }
-
+    
+    /**
+     * Retorna el nombre del libro.
+     * 
+     * @return Nombre del libro.
+     */
     public String getNombre() {
         return nombre;
     }
-
+    
+    /**
+     * Retorna el autor del libro.
+     * 
+     * @return Autor del libro.
+     */
     public String getAutor() {
         return autor;
     }
 
+    /**
+     * Retorna el ISBN del libro.
+     * 
+     * @return ISBN del libro.
+     */
     public long getISBN() {
         return isbn;
     }
 
+    /**
+     * Retorna el año del libro.
+     * 
+     * @return Año del libro.
+     */
     public short getAño() {
         return año;
     }
 
+    /**
+     * Retorna el género del libro.
+     * 
+     * @return Género del libro.
+     */
     public String getGenero() {
         return genero;
     }
-    
+
+    /**
+     * Retorna las ventas del libro.
+     * 
+     * @return Ventas del libro.
+     */
     public int getVentas() {
         return ventas;
     }
-    
+
+    /**
+     * Simula la venta de una copia del libro.
+     */
     public void aumentarVentas() {
         ventas++;
     }
