@@ -10,7 +10,6 @@ package proyecto_aed1;
  * @author Francisco
  */
 public class ListaLibros extends Lista<Libro> {
-    private int ventas = 0;
 
     public ListaLibros() {
     }
@@ -18,92 +17,118 @@ public class ListaLibros extends Lista<Libro> {
     public ListaLibros(INodo<Libro> unNodo) {
         super(unNodo);
     }
-
-    public int getVentas() {
-        return ventas;
-    }
     
-    public INodo<Libro> buscarPorNombre(String nombre) {
-        if (esVacia()) {
-            return null;
-        } else {
+    /**
+     * 
+     * @param nombre
+     * @return 
+     */
+    public ListaLibros buscarPorNombre(String nombre) {
+        ListaLibros listaAux = new ListaLibros();
+        if (!esVacia()) {
             INodo<Libro> aux = primero;
             while (aux != null) {
                 if (aux.getDato().getNombre().equals(nombre)) {
-                    return aux;
+                    listaAux.insertar(aux);
                 }
                 aux = aux.getSiguiente();
             }
         }
-        return null;
+        return listaAux;
     }
     
-    public INodo<Libro> buscarPorAutor(String autor) {
-        if (esVacia()) {
-            return null;
-        } else {
+    /**
+     * 
+     * @param autor
+     * @return 
+     */
+    public ListaLibros buscarPorAutor(String autor) {
+        ListaLibros listaAux = new ListaLibros();
+        if (!esVacia()) {
             INodo<Libro> aux = primero;
             while (aux != null) {
                 if (aux.getDato().getAutor().equals(autor)) {
-                    return aux;
+                    listaAux.insertar(aux);
                 }
                 aux = aux.getSiguiente();
             }
         }
-        return null;
+        return listaAux;
     }
     
-    public INodo<Libro> buscarPorGenero(String genero) {
-        if (esVacia()) {
-            return null;
-        } else {
+    /**
+     * 
+     * @param genero
+     * @return 
+     */
+    public ListaLibros buscarPorGenero(String genero) {
+        ListaLibros listaAux = new ListaLibros();
+        if (!esVacia()) {
             INodo<Libro> aux = primero;
             while (aux != null) {
                 if (aux.getDato().getGenero().equals(genero)) {
-                    return aux;
+                    listaAux.insertar(aux);
                 }
                 aux = aux.getSiguiente();
             }
         }
-        return null;
+        return listaAux;
     }
     
-    public INodo<Libro> buscarPorISBN(long isbn) {
-        if (esVacia()) {
-            return null;
-        } else {
-            INodo<Libro> aux = primero;
-            while (aux != null) {
-                if (aux.getDato().getISBN() == isbn) {
-                    return aux;
-                }
-                aux = aux.getSiguiente();
-            }
-        }
-        return null;
-    }
+//    /**
+//     * 
+//     * @param isbn
+//     * @return 
+//     */
+//    public ListaLibros buscarPorISBN(long isbn) {
+//        ListaLibros listaAux = new ListaLibros();
+//        if (!esVacia()) {
+//            INodo<Libro> aux = primero;
+//            while (aux != null) {
+//                if (aux.getDato().getISBN() == isbn) {
+//                    listaAux.insertar(aux);
+//                }
+//                aux = aux.getSiguiente();
+//            }
+//        }
+//        return listaAux;
+//    }
     
-    public INodo<Libro> buscarPorAño(int año) {
-        if (esVacia()) {
-            return null;
-        } else {
+    /**
+     * 
+     * @param año
+     * @return 
+     */
+    public ListaLibros buscarPorAño(int año) {
+        ListaLibros listaAux = new ListaLibros();
+        if (!esVacia()) {
             INodo<Libro> aux = primero;
             while (aux != null) {
                 if (aux.getDato().getAño() == año) {
-                    return aux;
+                    listaAux.insertar(aux);
                 }
                 aux = aux.getSiguiente();
             }
         }
-        return null;
+        return listaAux;
     }
     
-    @Override
-    public boolean eliminar(Comparable clave) {
-        ventas++;
-        return super.eliminar(clave);
-    }
-    
-        
-        
+    /**
+     * 
+     * @param año
+     * @return 
+     */
+    public ListaLibros buscarAPartirDel(int año) {
+        ListaLibros listaAux = new ListaLibros();
+        if (!esVacia()) {
+            INodo<Libro> aux = primero;
+            while (aux != null) {
+                if (aux.getDato().getAño() >= año) {
+                    listaAux.insertar(aux);
+                }
+                aux = aux.getSiguiente();
+            }
+        }
+        return listaAux;
+    }    
 }

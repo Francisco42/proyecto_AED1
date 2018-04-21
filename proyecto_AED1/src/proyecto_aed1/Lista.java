@@ -102,6 +102,19 @@ public class Lista<E> implements ILista<E> {
         return aux;
 
     }
+    
+    /**
+     * Método encargado de imprimir todos los datos del elemento del nodo (no solo la etiqueta)
+     */
+    public void imprimirDatos() {
+        if (!esVacia()) {
+            INodo<E> temp = primero;
+            while (temp != null) {
+                temp.imprimir();
+                temp = temp.getSiguiente();
+            }
+        }
+    }
 
     @Override
     public int cantElementos() {

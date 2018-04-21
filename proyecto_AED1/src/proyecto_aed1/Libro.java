@@ -15,6 +15,7 @@ public class Libro {
     private final long isbn;
     private final short año;
     private final String genero;
+    private int ventas;
 
     public Libro(String nombre, String autor, long isbn, short año, String genero) {
         this.nombre = nombre;
@@ -22,6 +23,7 @@ public class Libro {
         this.isbn = isbn;
         this.año = año;
         this.genero = genero;
+        this.ventas = 0;
     }
 
     public String getNombre() {
@@ -42,6 +44,14 @@ public class Libro {
 
     public String getGenero() {
         return genero;
+    }
+    
+    public int getVentas() {
+        return ventas;
+    }
+    
+    public void aumentarVentas() {
+        ventas++;
     }
     
     @Override
