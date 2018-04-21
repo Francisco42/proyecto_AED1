@@ -1,4 +1,4 @@
-package UT03.TA2;
+package proyecto_aed1;
 
 public interface INodo<E> {
 
@@ -8,6 +8,27 @@ public interface INodo<E> {
      * @return Dato contenido en el nodo.
      */
     public E getDato();
+
+    /**
+     * Asigna un dato al nodo.
+     *
+     * @param dato a asignar.
+     */
+    public void setDato(E dato);
+
+    /**
+     * Asigna el siguiente nodo al nodo actual.
+     *
+     * @param nodo Nodo a asignar como siguiente.
+     */
+    public void setSiguiente(INodo<E> nodo);
+
+    /**
+     * Retorna el siguiente nodo al nodo actual.
+     *
+     * @return Siguiente nodo del actual
+     */
+    public INodo<E> getSiguiente();
 
     /**
      * Imprime los datos del nodo

@@ -3,30 +3,30 @@ package proyecto_aed1;
 public interface ILista<E> {
 
     /**
-     * Metodo encargado de agregar un elemento al final de la lista.
+     * Método encargado de agregar un nodo al final de la lista.
      *
-     * @param elemento - Elemento a agregar
+     * @param nodo - Nodo a agregar
      */
-    public void insertar(E elemento);
+    public void insertar(INodo<E> nodo);
 
     /**
-     * Metodo encargado de buscar un elemento cuya clave es la indicada.
+     * Método encargado de buscar un nodo cuya clave es la indicada.
      *
-     * @param clave - Clave del elemento a buscar.
-     * @return El elemento encontrado. En caso de no encontrarlo, retornar null.
+     * @param clave - Clave del nodo a buscar.
+     * @return El nodo encontrado. En caso de no encontrarlo, retornar null.
      */
-    public E buscar(Comparable clave);
+    public INodo buscar(Comparable clave);
 
     /**
-     * Metodo encargado de eliminar un elemento cuya clave es la indicada.
+     * Método encargado de eliminar un nodo cuya clave es la indicada.
      *
-     * @param clave Clave del elemento a eliminar.
-     * @return True en caso de que la eliminacion haya sido efectuada con exito.
+     * @param clave Clave del nodo a eliminar.
+     * @return True en caso de que la eliminación haya sido efectuada con �xito.
      */
     public boolean eliminar(Comparable clave);
 
     /**
-     * Metodo encargado de imprimir en consola las claves de los elementos
+     * Método encargado de imprimir en consola las claves de los nodos
      * contenidos en la lista.
      * @return String con todas las claves
      */
@@ -34,7 +34,7 @@ public interface ILista<E> {
 
     /**
      * Retorna un String con las claves separadas por el separador pasado por
-     * parametro.
+     * parámetro.
      *
      * @param separador Separa las claves
      * @return String con todas las claves separadas
@@ -43,7 +43,7 @@ public interface ILista<E> {
 
     /**
      * Retorna la cantidad de elementos de la lista. En caso de que la lista
-     * este vacia, retornar 0.
+     * este vacía, retornar 0.
      *
      * @return Cantidad de elementos de la lista.
      */
@@ -61,6 +61,6 @@ public interface ILista<E> {
      *
      * @return Primer nodo de la lista.
      */
-    //public INodo<E> getPrimero();
+    public INodo<E> getPrimero();
 
 }

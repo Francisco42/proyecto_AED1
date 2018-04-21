@@ -1,9 +1,10 @@
-package UT03.TA2;
+package proyecto_aed1;
 
 public class Nodo<T> implements INodo<T> {
 
     private final Comparable etiqueta;
-    private final T dato;
+    private T dato;
+    private INodo<T> siguiente = null;
 
     public Nodo(T dato, Comparable etiqueta) {
         this.dato = dato;
@@ -16,8 +17,25 @@ public class Nodo<T> implements INodo<T> {
     }
 
     @Override
+    public void setDato(T dato) {
+        this.dato = dato;
+
+    }
+
+    @Override
     public Comparable getEtiqueta() {
         return this.etiqueta;
+    }
+
+    @Override
+    public void setSiguiente(INodo<T> nodo) {
+        this.siguiente = nodo;
+
+    }
+
+    @Override
+    public INodo<T> getSiguiente() {
+        return this.siguiente;
     }
 
     @Override
@@ -30,9 +48,9 @@ public class Nodo<T> implements INodo<T> {
         System.out.println(this.etiqueta);
     }
 
-//    public INodo<T> clonar() {
-//        return new Nodo<T>(this.dato, this.etiqueta);
-//    }
+    public INodo<T> clonar() {
+        return new Nodo<T>(this.dato, this.etiqueta);
+    }
 
     @Override
     public boolean equals(INodo<T> unNodo) {
