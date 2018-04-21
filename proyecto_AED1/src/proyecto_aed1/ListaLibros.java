@@ -31,7 +31,7 @@ public class ListaLibros extends Lista<Libro> {
             INodo<Libro> aux = primero;
             while (aux != null) {
                 if (aux.getDato().getNombre().equals(nombre)) {
-                    listaAux.insertar(aux);
+                    listaAux.insertar(aux.clonar());
                 }
                 aux = aux.getSiguiente();
             }

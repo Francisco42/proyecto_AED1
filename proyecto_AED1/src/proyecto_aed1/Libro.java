@@ -13,11 +13,11 @@ public class Libro {
     private final String nombre;
     private final String autor;
     private final long isbn;
-    private final short año;
+    private final int año;
     private final String genero;
     private int ventas;
 
-    public Libro(String nombre, String autor, long isbn, short año, String genero) {
+    public Libro(String nombre, String autor, long isbn, int año, String genero) {
         this.nombre = nombre;
         this.autor = autor;
         this.isbn = isbn;
@@ -58,7 +58,7 @@ public class Libro {
      * 
      * @return Año del libro.
      */
-    public short getAño() {
+    public int getAño() {
         return año;
     }
 

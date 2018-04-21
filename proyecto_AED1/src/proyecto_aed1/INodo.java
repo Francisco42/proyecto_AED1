@@ -39,6 +39,8 @@ public interface INodo<E> {
      * Imprime la etiqueta del nodo
      */
     public void imprimirEtiqueta();
+    
+    public INodo<E> clonar();
 
     /**
      *

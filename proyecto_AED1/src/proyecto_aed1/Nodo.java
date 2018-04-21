@@ -46,8 +46,9 @@ public class Nodo<T> implements INodo<T> {
         System.out.println(this.etiqueta);
     }
 
+    @Override
     public INodo<T> clonar() {
-        return new Nodo<T>(this.dato, this.etiqueta);
+        return new Nodo<>(this.dato, this.etiqueta);
     }
 
     @Override
