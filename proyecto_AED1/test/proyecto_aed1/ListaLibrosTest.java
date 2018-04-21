@@ -72,7 +72,7 @@ public class ListaLibrosTest {
         result.imprimirDatos();
         expResult.imprimirDatos();
         
-        assertEquals(expResult, result);
+        assertEquals(expResult.getPrimero().getDato().toString(), result.getPrimero().getDato().toString());
     }
 
     /**
