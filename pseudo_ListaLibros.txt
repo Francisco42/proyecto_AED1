@@ -1,0 +1,70 @@
+
+
+    ListaLibros buscarPorAutor(autor)
+        listaAux <- nuevo ListaLibros()
+        SI <!esVacia()>
+            aux = primero
+            MIENTRAS <aux <> nulo>
+                autores <- aux.getDato().getAutores()
+                i <- 0
+                MIENTRAS <i < autores.length> 
+                    SI <autores[i] = autor>
+                        listaAux.insertar(aux.clonar())
+                    FIN SI
+                    i <- i + 1
+                FIN MIENTRAS
+                aux <- aux.getSiguiente()
+            FIN MIENTRAS
+        FIN SI
+        devuelve listaAux
+
+
+
+
+
+    ListaLibros buscarPorNombre(nombre)
+        listaAux <- nuevo ListaLibros()
+        SI <!esVacia()>
+            aux = primero
+            MIENTRAS <aux <> nulo>
+                SI <aux.getDato().getNombre() = autor>
+                    listaAux.insertar(aux.clonar())
+                FIN SI
+                aux <- aux.getSiguiente()
+            FIN MIENTRAS
+        FIN SI
+        devuelve listaAux
+
+
+
+
+    boolean agregarStock(clave, cantidad)
+        aux <- buscar(clave)
+        SI <aux = nulo>
+            devuelve falso
+        SINO
+            libroAux <- aux.getDato()
+	    viejoStock <- libroAux.getStock()
+	    libroAux.setStock(viejoStock + cantidad)
+	    devuelve verdadero
+	FIN SI
+
+
+
+
+    boolean venderLibros(clave, cantidad)
+	aux <- buscar(clave)
+        SI <aux = nulo>
+            devuelve falso
+        SINO
+            libroAux <- aux.getDato()
+	    viejoStock <- libroAux.getStock()
+	    SI <viejoStock < cantidad>
+		libroAux.setStock(0)
+	    SINO
+	        libroAux.setStock(viejoStock - cantidad)
+	    FIN SI
+	    devuelve verdadero
+	FIN SI
+
+
