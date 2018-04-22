@@ -12,8 +12,8 @@ package proyecto_aed1;
 public class Libro {
     private final String nombre;
     private final String autor;
-    private final long isbn;
-    private final int año;
+    private final Long isbn;
+    private final Integer año;
     private final String genero;
     private int ventas;
 
