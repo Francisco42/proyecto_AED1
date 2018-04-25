@@ -1,0 +1,51 @@
+
+
+
+    agregarLibro(libro)
+	aux <- libro.autores.primero
+	MIENTRAS <aux <> nulo>
+	    nodo <- agregarAutores(aux.dato)
+	    nodo.dato.insertar(nuevo Nodo(libro, libro.isbn))
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+
+
+
+    INodo agregarAutores(autor del tipo String)
+	nodo <- biblioteca.buscar(autor)
+	SI <nodo = nulo>
+	    nuevoNodo <- nuevo Nodo(nuevo ListaLibros, autor)
+	    biblioteca.insertar(nuevoNodo)
+	    devuelve nuevoNodo
+	FIN SI
+	devuelve nodo
+			
+	
+
+
+    eliminarLibro(isbn)
+	aux <- biblioteca.primero
+	MIENTRAS <aux <> nulo>
+	    aux.dato.eliminar(isbn)
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+
+
+
+
+    eliminarAutor(autor del tipo String)
+	aux <- biblioteca.buscar(autor)
+	listaAEliminar <- aux.dato
+	aux.dato <- nulo
+	biblioteca.eliminar(autor)
+	
+	MIENTRAS <!listaAEliminar.esVacia>
+	    aux2 <- biblioteca.primero
+	    MIENTRAS <aux2 <> nulo>
+		aux2.dato.eliminar(listaAEliminar.primero.etiqueta)
+		aux2 <- aux2.siguiente
+	    FIN MIENTRAS
+	    listaAEliminar.eliminar(listaAEliminar.primero.etiqueta)
+	FIN MIENTRAS
+	listaAEliminar <- nulo	
+	

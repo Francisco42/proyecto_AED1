@@ -1,0 +1,12 @@
+
+
+
+    boolean equals(autor de tipo String)
+	aux <- primero
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato = autor>
+		devuelve verdadero
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+	devuelva falso

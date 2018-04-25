@@ -96,39 +96,4 @@ public class UcuBooks {
     public void mostrarUltimasEdiciones(int año) {
         biblioteca.buscarAPartirDel(año).imprimirDatos();
     }
-    
-    /**
-     * Vende una copia del libro especificado.
-     * 
-     * @param isbn - El código del libro a vender.
-     */
-    public void venderCopia(long isbn) {
-        Libro libro = biblioteca.buscar(isbn).getDato();
-        libro.aumentarVentas();
-        System.out.println("Libro vendido exitosamente.");
-    }  
-    
-    /**
-     * Muestra en pantalla las ventas de un libro en particular.
-     * 
-     * @param isbn - El código del libro.
-     */
-    public void mostrarVentasLibro(long isbn) {
-        Libro libro = biblioteca.buscar(isbn).getDato();
-        System.out.println("Se han vendido " + libro.getVentas() + " copias del libro " + libro.getNombre());
-    }
-    
-    /**
-     * Muestra en pantalla las ventas de todos los libros de un autor en particular.
-     * 
-     * @param autor - El autor del cual de quiere saber sus ventas.
-     */
-    public void mostrarVentasAutor(String autor) {
-        ListaLibros lista = biblioteca.buscarPorAutor(autor);
-        int sumaVentas = 0;
-        for (INodo<Libro> aux = lista.getPrimero(); aux != null; aux = aux.getSiguiente()) {
-            sumaVentas += aux.getDato().getVentas();
-        }
-        System.out.println("Se han vendido " + sumaVentas + " copias de libros del autor " + autor);
-    }
 }
