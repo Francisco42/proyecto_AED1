@@ -47,5 +47,31 @@
 	    FIN MIENTRAS
 	    listaAEliminar.eliminar(listaAEliminar.primero.etiqueta)
 	FIN MIENTRAS
-	listaAEliminar <- nulo	
+	listaAEliminar <- nulo
+
+
+
+
+
+
+    mostrarPorAutor(autor del tipo String)
+	nodo <- biblioteca.buscar(autor)
+	nodo.dato.imprimirDatos
+
+
+
+    mostrarPorNombre(nombre de tipo String)
+	aux <- biblioteca.primero
+	MIENTRAS <aux <> nulo>
+	    aux.dato.buscarPorNombre(nombre).imprimirDatos
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+
+
+    mostrarPorGenero(tag de tipo String)
+	aux <- biblioteca.primero
+	MIENTRAS <aux <> nulo>
+	    aux.dato.buscarPorTag(tag).imprimirDatos
+	    aux <- aux.siguiente
+	FIN MIENTRAS	
 	
