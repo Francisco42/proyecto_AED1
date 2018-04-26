@@ -14,19 +14,20 @@
 
 
 
-    INodo buscar(clave)
-        SI <esVacia()>
+    INodo buscarLista(clave)
+	listaAux <- nueva Lista
+        SI <esVacia>
             devuelve nulo
         SINO
             aux <- primero
             MIENTRAS <aux <> nulo>
-                SI <aux.getEtiqueta() = clave>
-                    devuelve aux
+                SI <aux.etiqueta = clave>
+                    listaAux.insertar(clonar(aux.etiqueta))
                 FIN SI
-                aux <- aux.getSiguiente()
+                aux <- aux.siguiente
             FIN MIENTRAS
         FIN SI
-        devuelve nulo
+        devuelve listaAux
 
 
 
@@ -58,5 +59,35 @@
             aux <- aux.getSiguiente()
         FIN MIENTRAS
         devuelve falso
+
+
+
+
+    INodo quitar(clave)
+        SI <esVacia>
+            devuelve nulo
+        SINO
+            aux <- primero
+            SI <primero.Etiqueta = clave>
+                primero <- aux.siguiente
+                aux.siguiente <- nulo
+                devuelve aux
+            SINO
+                aux2 <- aux.siguiente
+                MIENTRAS <aux2 <> nulo>
+                    SI <aux2.etiqueta = clave>
+                        aux.siguiente <- aux2.siguiente
+                        aux2.siguiente <- nulo
+                        devuelve aux2
+                    FIN SI
+                    aux <- aux2
+                    aux2 <- aux2.siguiente
+                FIN MIENTRAS          
+            FIN SI
+        FIN SI
+        devuelve nulo
+
+
+
 
 

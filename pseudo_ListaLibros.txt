@@ -1,7 +1,7 @@
 
 
     ListaLibros buscarPorAutor(autor)
-        listaAux <- nuevo ListaLibros()
+        listaAux <- nuevo ListaLibros
         aux <- primero
         MIENTRAS <aux <> nulo>
             SI <aux.dato.autores = autor>
@@ -16,7 +16,7 @@
 
 
     ListaLibros buscarPorNombre(nombre)
-        listaAux <- nuevo ListaLibros()
+        listaAux <- nuevo ListaLibros
         aux <- primero
         MIENTRAS <aux <> nulo>
             SI <aux.dato.nombre = nombre>
