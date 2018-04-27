@@ -86,3 +86,4 @@
 	listaAutores.eliminar(autor)
     FIN
     
+
