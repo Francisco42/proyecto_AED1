@@ -1,0 +1,88 @@
+
+
+
+
+    mostrarUltimasEdiciones(año de tipo int)
+    COMIENZO
+	aux <- listaLibros.primero
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato.año >= año>
+		aux.imprimir
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+    FIN
+
+
+
+    mostrarDetalles(isbn de tipo long)
+    COMIENZO
+	nodo <- listaLibros.buscar(isbn)
+	nodo.dato.imprimirDetalles
+    FIN
+
+
+
+    mostrarPorTitulo(titulo de tipo String)
+    COMIENZO
+	aux <- listaLibros.primero
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato.titulo = titulo>
+		aux.imprimir
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+    FIN
+
+
+
+    mostrarPorAño(año de tipo int)
+    COMIENZO
+	aux <- listaLibros.primero
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato.año = año>
+		aux.imprimir
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+    FIN
+
+
+
+    mostrarPorAutor(autor de tipo String)
+    COMIENZO
+	nodo <- listaAutores.buscar(autor)
+	nodo.imprimir
+    FIN
+
+
+
+    mostrarPorTag(tag de tipo String)
+    COMIENZO
+	nodo <- listaTags.buscar(tag)
+	nodo.imprimir
+    FIN
+
+
+
+    mostrarPorISBN(isbn de tipo long)
+    COMIENZO
+	nodo <- listaLibros.buscar(isbn)
+	nodo.imprimir
+    FIN
+
+
+
+
+    eliminarAutor(autor de tipo String)
+    COMIENZO
+	autorAEliminar <- listaAutores.buscar(autor).dato
+	librosAEliminar <- autorAEiminar.librosEscritos
+	aux <- librosAEliminar.primero
+	MIENTRAS <aux <> nulo>
+	    listaLibros.eliminar(aux.etiqueta)
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+	listaAutores.eliminar(autor)
+    FIN
+    

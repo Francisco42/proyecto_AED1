@@ -1,0 +1,154 @@
+
+
+    mostrarUltimasEdiciones(año de tipo int)
+    COMIENZO
+	aux <- listaLibros.primero
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato.año >= año>
+		aux.imprimir
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+    FIN
+
+
+
+    mostrarDetalles(id de tipo int)
+    COMIENZO
+	listaLibros.buscar(id).imprimir
+	aux <- librosAutores.buscarLista(id).primero
+	MIENTRAS <aux <> nulo>
+	    listaAutores.buscar(aux.dato).imprimir
+	FIN MIENTRAS
+	aux2 <- librosTags.buscarLista(id).primero
+	MIENTRAS <aux2 <> nulo>
+	    listaTags.buscar(aux2.dato).imprimir
+	FIN MIENTRAS
+    FIN
+
+
+
+
+
+
+    mostrarPorTitulo(titulo de tipo String)
+    COMIENZO
+	aux <- listaLibros.primero
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato.titulo = titulo>
+		aux.imprimir
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+    FIN
+
+
+
+    mostrarPorAño(año de tipo int)
+    COMIENZO
+	aux <- listaLibros.primero
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato.año = año>
+		aux.imprimir
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+    FIN
+
+
+
+    mostrarPorAutor(autor de tipo String)
+    COMIENZO
+	aux <- listaAutores.primero
+	idAutor <- 0
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato = autor>
+		idAutor <- aux.etiqueta
+	    FIN SI	
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+	
+	aux2 <- librosAutores.primero
+	idLibro <- 0
+	MIENTRAS <aux2 <> nulo>
+	    SI <aux2.dato = idAutor>
+		idLibro <- aux2.etiqueta
+	    FIN SI	
+	    aux2 <- aux2.siguiente
+	FIN MIENTRAS
+	
+	listaLibros.buscar(idLibro).imprimir
+    FIN	
+
+
+
+
+    mostrarPorTag(tag de tipo String)
+    COMIENZO
+	aux <- listaTags.primero
+	idTag <- 0
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato = tag>
+		idTag <- aux.etiqueta
+	    FIN SI	
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+	
+	aux2 <- librosTags.primero
+	idLibro <- 0
+	MIENTRAS <aux2 <> nulo>
+	    SI <aux2.dato = idTag>
+		idLibro <- aux2.etiqueta
+	    FIN SI	
+	    aux2 <- aux2.siguiente
+	FIN MIENTRAS
+	
+	listaLibros.buscar(idLibro).imprimir
+    FIN
+
+
+
+
+    mostrarPorISBN(isbn de tipo long)
+    COMIENZO
+	nodo <- listaLibros.buscar(isbn)
+	nodo.imprimir
+    FIN
+
+
+
+
+    eliminarAutor(autor de tipo String)
+    COMIENZO
+	aux <- listaAutores.primero
+	idAutor <- 0
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato = autor>
+		idAutor <- aux.etiqueta
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+	listaAutores.eliminar(idAutor)
+	
+	aux2 <- librosAutores.primero
+	librosEliminados <- nueva Lista
+	MIENTRAS <aux2 <> nulo>
+	    SI <aux2.dato = idAutor>
+		idLibro <- aux2.etiqueta
+		librosEliminados.insertar(listaLibros.quitar(idLibro))
+	    FIN SI
+	    aux2 <- aux2.siguiente
+	FIN MIENTRAS
+
+	aux3 <- librosEliminados.primero
+	MIENTRAS <aux3 <> nulo>
+	    librosAutores.eliminar(aux3.etiqueta)
+	    aux3 <- aux3.siguiente
+	FIN MIENTRAS
+    FIN
+
+
+
+
+
+
