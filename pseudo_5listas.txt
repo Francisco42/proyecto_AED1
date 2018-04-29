@@ -69,15 +69,12 @@
 	FIN MIENTRAS
 	
 	aux2 <- librosAutores.primero
-	idLibro <- 0
 	MIENTRAS <aux2 <> nulo>
 	    SI <aux2.dato = idAutor>
-		idLibro <- aux2.etiqueta
+		listaLibros.buscar(aux2.etiqueta).imprimir
 	    FIN SI	
 	    aux2 <- aux2.siguiente
 	FIN MIENTRAS
-	
-	listaLibros.buscar(idLibro).imprimir
     FIN	
 
 
@@ -95,15 +92,12 @@
 	FIN MIENTRAS
 	
 	aux2 <- librosTags.primero
-	idLibro <- 0
 	MIENTRAS <aux2 <> nulo>
 	    SI <aux2.dato = idTag>
-		idLibro <- aux2.etiqueta
+		listaLibros.buscar(aux2.etiqueta).imprimir
 	    FIN SI	
 	    aux2 <- aux2.siguiente
 	FIN MIENTRAS
-	
-	listaLibros.buscar(idLibro).imprimir
     FIN
 
 
