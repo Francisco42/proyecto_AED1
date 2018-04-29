@@ -105,8 +105,13 @@
 
     mostrarPorISBN(isbn de tipo long)
     COMIENZO
-	nodo <- listaLibros.buscar(isbn)
-	nodo.imprimir
+	aux <- listaLibros.primero
+	MIENTRAS <aux <> nulo>
+	    SI <aux.dato.isbn = isbn>
+		aux.imprimir
+	    FIN SI
+	    aux <- aux.siguiente
+	FIN MIENTRAS
     FIN
 
 
