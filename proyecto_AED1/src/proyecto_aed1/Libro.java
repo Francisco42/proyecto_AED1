@@ -11,19 +11,21 @@ package proyecto_aed1;
  */
 public class Libro {
     private final String nombre;
-    private final String autor;
-    private final Long isbn;
-    private final Integer año;
-    private final String genero;
-    private int ventas;
+    private final long isbn;
+    private final short año;
+    private final float puntaje;
+    private final int cantidadPuntajes;
+    private Lista<Tag> tags;
+    private Lista<Autor> autores;
 
-    public Libro(String nombre, String autor, long isbn, int año, String genero) {
+    public Libro(String nombre, long isbn, short año, float puntaje, int cantidadPuntajes) {
         this.nombre = nombre;
-        this.autor = autor;
         this.isbn = isbn;
         this.año = año;
-        this.genero = genero;
-        this.ventas = 0;
+        this.puntaje = puntaje;
+        this.cantidadPuntajes = cantidadPuntajes;
+        this.tags = new Lista<>();
+        this.autores = new Lista<>();
     }
     
     /**
@@ -38,10 +40,10 @@ public class Libro {
     /**
      * Retorna el autor del libro.
      * 
-     * @return Autor del libro.
+     * @return Lista con los autores del libro.
      */
-    public String getAutor() {
-        return autor;
+    public Lista<Autor> getAutores() {
+        return autores;
     }
 
     /**
@@ -65,30 +67,40 @@ public class Libro {
     /**
      * Retorna el género del libro.
      * 
-     * @return Género del libro.
+     * @return Lista con los tags del libro.
      */
-    public String getGenero() {
-        return genero;
+    public Lista<Tag> getTags() {
+        return tags;
     }
 
     /**
-     * Retorna las ventas del libro.
+     * Retorna el puntaje del libro
      * 
-     * @return Ventas del libro.
+     * @return Puntaje del libro
      */
-    public int getVentas() {
-        return ventas;
+    public float getPuntaje() {
+        return puntaje;
     }
 
     /**
-     * Simula la venta de una copia del libro.
+     * Retorna la cantidad de puntuaciones del libro
+     * 
+     * @return Cantidad de puntucaiones
      */
-    public void aumentarVentas() {
-        ventas++;
+    public int getCantidadPuntajes() {
+        return cantidadPuntajes;
+    }
+    
+    public void insertarAutor(Autor autor) {
+        autores.insertar(new Nodo<>(autor.getNombre(), autor));
+    }
+    
+    public void insertarTag(Tag tag) {
+        tags.insertar(new Nodo<>(tag.getTag(), tag));
     }
     
     @Override
     public String toString() {
-        return "Libro: " + nombre + " Autor: " + autor + " Año: " + año + " Genero: " + genero + " ISBN: " + isbn;
+        return "Libro: " + nombre + " Año: " + año + " ISBN: " + isbn;
     }
 }

@@ -1,39 +1,32 @@
 package proyecto_aed1;
 
+/**
+ *
+ * @author ernesto
+ * @param <T>
+ */
 public class Nodo<T> implements INodo<T> {
 
     private final Comparable etiqueta;
     private T dato;
-    private INodo<T> siguiente = null;
+    private Nodo<T> siguiente = null;
 
-    public Nodo(T dato, Comparable etiqueta) {
-        this.dato = dato;
+    public Nodo(Comparable etiqueta, T dato) {
         this.etiqueta = etiqueta;
+        this.dato = dato;
     }
 
-    @Override
     public T getDato() {
         return this.dato;
     }
 
-    @Override
     public void setDato(T dato) {
         this.dato = dato;
+
     }
 
-    @Override
     public Comparable getEtiqueta() {
         return this.etiqueta;
-    }
-
-    @Override
-    public void setSiguiente(INodo<T> nodo) {
-        this.siguiente = nodo;
-    }
-
-    @Override
-    public INodo<T> getSiguiente() {
-        return this.siguiente;
     }
 
     @Override
@@ -46,13 +39,18 @@ public class Nodo<T> implements INodo<T> {
         System.out.println(this.etiqueta);
     }
 
-    @Override
-    public INodo<T> clonar() {
-        return new Nodo<>(this.dato, this.etiqueta);
+    public Nodo<T> clonar() {
+        return new Nodo<>(this.etiqueta, this.dato);
     }
 
+    /**
+     *
+     * @param unNodo
+     * @return
+     */
+
     @Override
-    public boolean equals(INodo<T> unNodo) {
+    public boolean equals(Nodo unNodo) {
         return this.dato.equals(unNodo.getDato());
     }
 
@@ -60,4 +58,13 @@ public class Nodo<T> implements INodo<T> {
     public int compareTo(Comparable etiqueta) {
         return this.etiqueta.compareTo(etiqueta);
     }
+
+    public Nodo<T> getSiguiente() {
+        return this.siguiente;
+    }
+
+    public void setSiguiente(Nodo<T> nodo) {
+        this.siguiente = nodo;
+    }
+
 }

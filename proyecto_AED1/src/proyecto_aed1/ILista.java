@@ -1,16 +1,17 @@
 package proyecto_aed1;
 
-public interface ILista<E> {
+
+public interface ILista<T> {
 
     /**
-     * Método encargado de agregar un nodo al final de la lista.
+     * Metodo encargado de agregar un nodo al final de la lista.
      *
      * @param nodo - Nodo a agregar
      */
-    public void insertar(INodo<E> nodo);
+    public void insertar(Nodo<T> nodo);
 
     /**
-     * Método encargado de buscar un nodo cuya clave es la indicada.
+     * Metodo encargado de buscar un nodo cuya clave es la indicada.
      *
      * @param clave - Clave del nodo a buscar.
      * @return El nodo encontrado. En caso de no encontrarlo, retornar null.
@@ -18,32 +19,32 @@ public interface ILista<E> {
     public INodo buscar(Comparable clave);
 
     /**
-     * Método encargado de eliminar un nodo cuya clave es la indicada.
+     * Metodo encargado de eliminar un nodo cuya clave es la indicada.
      *
      * @param clave Clave del nodo a eliminar.
-     * @return True en caso de que la eliminación haya sido efectuada con éxito.
+     * @return True en caso de que la eliminaci�n haya sido efectuada con �xito.
      */
     public boolean eliminar(Comparable clave);
 
     /**
-     * Método encargado de imprimir en consola las claves de los nodos
+     * Metodo encargado de imprimir en consola las claves de los nodos
      * contenidos en la lista.
-     * @return String con todas las claves
+     * @return 
      */
     public String imprimir();
 
     /**
      * Retorna un String con las claves separadas por el separador pasado por
-     * parámetro.
+     * par�metro.
      *
      * @param separador Separa las claves
-     * @return String con todas las claves separadas
+     * @return
      */
     public String imprimir(String separador);
 
     /**
      * Retorna la cantidad de elementos de la lista. En caso de que la lista
-     * este vacía, retornar 0.
+     * este vac�a, retornar 0.
      *
      * @return Cantidad de elementos de la lista.
      */
@@ -61,6 +62,7 @@ public interface ILista<E> {
      *
      * @return Primer nodo de la lista.
      */
-    public INodo<E> getPrimero();
+    public Nodo<T> getPrimero();
 
+     public Nodo<T> quitarPrimero();
 }
