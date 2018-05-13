@@ -119,6 +119,16 @@ public class Lista<T> implements ILista<T> {
         }
         return aux;
     }
+    
+    public void imprimirDatos() {
+        if (!esVacia()) {
+            Nodo<T> temp = getPrimero();
+            while (temp != null) {
+                temp.imprimir();
+                temp = temp.getSiguiente();
+            }
+        }
+    }
 
     @Override
     public String imprimir(String separador) {

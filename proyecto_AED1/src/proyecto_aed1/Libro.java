@@ -10,7 +10,7 @@ package proyecto_aed1;
  * @author Francisco
  */
 public class Libro {
-    private final String nombre;
+    private final String titulo;
     private final long isbn;
     private final short año;
     private final float puntaje;
@@ -18,8 +18,8 @@ public class Libro {
     private Lista<Tag> tags;
     private Lista<Autor> autores;
 
-    public Libro(String nombre, long isbn, short año, float puntaje, int cantidadPuntajes) {
-        this.nombre = nombre;
+    public Libro(String titulo, long isbn, short año, float puntaje, int cantidadPuntajes) {
+        this.titulo = titulo;
         this.isbn = isbn;
         this.año = año;
         this.puntaje = puntaje;
@@ -33,8 +33,8 @@ public class Libro {
      * 
      * @return Nombre del libro.
      */
-    public String getNombre() {
-        return nombre;
+    public String getTitulo() {
+        return titulo;
     }
     
     /**
@@ -101,6 +101,6 @@ public class Libro {
     
     @Override
     public String toString() {
-        return "Libro: " + nombre + " Año: " + año + " ISBN: " + isbn;
+        return "Libro: " + titulo + " Año: " + año + " ISBN: " + isbn;
     }
 }

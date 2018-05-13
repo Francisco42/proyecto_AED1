@@ -29,4 +29,9 @@ public class Autor {
     public void insertarLibro(Libro libro) {
         librosEscritos.insertar(new Nodo<>(libro.getISBN(), libro));
     }
+    
+    @Override
+    public String toString() {
+        return "Autor: " + nombre;
+    }
 }
