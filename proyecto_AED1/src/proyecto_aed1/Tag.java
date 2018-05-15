@@ -26,7 +26,7 @@ public class Tag {
         return librosTagged;
     }
     
-    public void insertarLibro(Libro libro) {
-        librosTagged.insertar(new Nodo<>(libro.getISBN(), libro));
+    public void insertarLibro(int id, Libro libro) {
+        librosTagged.insertar(new Nodo<>(id, libro));
     }
 }

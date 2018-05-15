@@ -91,12 +91,12 @@ public class Libro {
         return cantidadPuntajes;
     }
     
-    public void insertarAutor(Autor autor) {
-        autores.insertar(new Nodo<>(autor.getNombre(), autor));
+    public void insertarAutor(int id, Autor autor) {
+        autores.insertar(new Nodo<>(id, autor));
     }
     
-    public void insertarTag(Tag tag) {
-        tags.insertar(new Nodo<>(tag.getTag(), tag));
+    public void insertarTag(int id, Tag tag) {
+        tags.insertar(new Nodo<>(id, tag));
     }
     
     @Override

@@ -26,8 +26,8 @@ public class Autor {
         return librosEscritos;
     }
     
-    public void insertarLibro(Libro libro) {
-        librosEscritos.insertar(new Nodo<>(libro.getISBN(), libro));
+    public void insertarLibro(int id, Libro libro) {
+        librosEscritos.insertar(new Nodo<>(id, libro));
     }
     
     @Override

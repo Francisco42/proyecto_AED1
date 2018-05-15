@@ -19,6 +19,30 @@ public class Biblioteca {
         listaTags = new Lista<>();
         listaAutores = new Lista<>();
     }
+
+    public Lista<Libro> getListaLibros() {
+        return listaLibros;
+    }
+
+    public Lista<Tag> getListaTags() {
+        return listaTags;
+    }
+
+    public Lista<Autor> getListaAutores() {
+        return listaAutores;
+    }
+    
+    public void insertarLibro(int id, Libro libro) {
+        listaLibros.insertar(new Nodo<>(id, libro));
+    }
+    
+    public void insertarAutor(int id, Autor autor) {
+        listaAutores.insertar(new Nodo<>(id, autor));
+    }
+    
+    public void insertarTag(int id, Tag tag) {
+        listaTags.insertar(new Nodo<>(id, tag));
+    }
     
     public void mostrarUltimasEdiciones(int año) {
         Nodo<Libro> aux = listaLibros.getPrimero();
