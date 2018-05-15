@@ -6,7 +6,8 @@
 package proyecto_aed1;
 
 /**
- *
+ * Representa la entidad Biblioteca.
+ * 
  * @author usuario
  */
 public class Biblioteca {
@@ -20,6 +21,11 @@ public class Biblioteca {
         listaAutores = new Lista<>();
     }
 
+    /**
+     * 
+     * 
+     * @return 
+     */
     public Lista<Libro> getListaLibros() {
         return listaLibros;
     }

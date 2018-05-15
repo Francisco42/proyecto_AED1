@@ -6,7 +6,8 @@
 package proyecto_aed1;
 
 /**
- *
+ * Representa la entidad Libro
+ * 
  * @author Francisco
  */
 public class Libro {
@@ -74,27 +75,40 @@ public class Libro {
     }
 
     /**
-     * Retorna el puntaje del libro
+     * Retorna el puntaje del libro.
      * 
-     * @return Puntaje del libro
+     * @return Puntaje del libro.
      */
     public float getPuntaje() {
         return puntaje;
     }
 
     /**
-     * Retorna la cantidad de puntuaciones del libro
+     * Retorna la cantidad de puntuaciones del libro.
      * 
-     * @return Cantidad de puntucaiones
+     * @return Cantidad de puntucaiones.
      */
     public int getCantidadPuntajes() {
         return cantidadPuntajes;
     }
     
+    /**
+     * Inserta un autor en la lista de autores del libro.
+     * 
+     * @param id - El id del autor a insertar.
+     * @param autor - El autor a insertar.
+     */
     public void insertarAutor(int id, Autor autor) {
         autores.insertar(new Nodo<>(id, autor));
     }
     
+    
+    /**
+     * Inserta un tag en la lista de tags del libro.
+     * 
+     * @param id - El id del tag a insertar.
+     * @param tag - El tag a insertar.
+     */
     public void insertarTag(int id, Tag tag) {
         tags.insertar(new Nodo<>(id, tag));
     }

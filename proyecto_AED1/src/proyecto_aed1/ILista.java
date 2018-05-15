@@ -64,5 +64,5 @@ public interface ILista<T> {
      */
     public Nodo<T> getPrimero();
 
-     public Nodo<T> quitarPrimero();
+    public Nodo<T> quitarPrimero();
 }

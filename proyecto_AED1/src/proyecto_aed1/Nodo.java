@@ -16,15 +16,20 @@ public class Nodo<T> implements INodo<T> {
         this.dato = dato;
     }
 
+    /**
+     * Retorna el dato del nodo.
+     * 
+     * @return - El dato del nodo. 
+     */
     public T getDato() {
         return this.dato;
     }
 
-    public void setDato(T dato) {
-        this.dato = dato;
-
-    }
-
+    /**
+     * Retorna la etiqueta del nodo.
+     * 
+     * @return - La etiqueta.
+     */
     public Comparable getEtiqueta() {
         return this.etiqueta;
     }
@@ -39,15 +44,14 @@ public class Nodo<T> implements INodo<T> {
         System.out.println(this.etiqueta);
     }
 
+    /**
+     * Crea un nuevo nodo con el mismo dato y etiqueta.
+     * 
+     * @return - El nuevo nodo.
+     */
     public Nodo<T> clonar() {
         return new Nodo<>(this.etiqueta, this.dato);
     }
-
-    /**
-     *
-     * @param unNodo
-     * @return
-     */
 
     @Override
     public boolean equals(Nodo unNodo) {
@@ -59,10 +63,20 @@ public class Nodo<T> implements INodo<T> {
         return this.etiqueta.compareTo(etiqueta);
     }
 
+    /**
+     * Retorna el siguiente nodo en la lista.
+     * 
+     * @return - El siguiente nodo.
+     */
     public Nodo<T> getSiguiente() {
         return this.siguiente;
     }
 
+    /**
+     * Le asigna a este nodo un siguiente nuevo.
+     * 
+     * @param nodo - El nuevo siguiente.
+     */
     public void setSiguiente(Nodo<T> nodo) {
         this.siguiente = nodo;
     }

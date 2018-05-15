@@ -3,7 +3,7 @@ package proyecto_aed1;
 
 public class Lista<T> implements ILista<T> {
 
-    protected Nodo<T> primero;
+    private Nodo<T> primero;
 
     public Lista() {
         primero = null;
@@ -120,6 +120,9 @@ public class Lista<T> implements ILista<T> {
         return aux;
     }
     
+    /**
+     * Metodo encargado de imprimir los datos de los nodos de la lista.
+     */
     public void imprimirDatos() {
         if (!esVacia()) {
             Nodo<T> temp = getPrimero();
@@ -160,6 +163,13 @@ public class Lista<T> implements ILista<T> {
         }
     }
     
+    /**
+     * Compara la lista con otra pasada por parametro.
+     * 
+     * @param otraLista - La lista con la cual se va a comparar.
+     * @return - true si las listas contienen los mismos datos 
+     * en el mismo orden, false en caso contrario.
+     */
     public boolean equals(Lista<T> otraLista) {
         Nodo<T> aux1 = this.primero;
         Nodo<T> aux2 = otraLista.getPrimero();
