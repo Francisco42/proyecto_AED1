@@ -32,6 +32,6 @@ public class Autor {
     
     @Override
     public String toString() {
-        return "Autor: " + nombre;
+        return nombre;
     }
 }

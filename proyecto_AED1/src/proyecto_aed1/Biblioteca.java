@@ -75,20 +75,50 @@ public class Biblioteca {
     }
     
     public void mostrarPorISBN(long isbn) {
-        Nodo<Libro> aux = listaLibros.buscar(isbn);
-        aux.imprimir();
+        Nodo<Libro> aux = listaLibros.getPrimero();
+        while (aux != null) {
+            if (aux.getDato().getISBN() == isbn) {
+                aux.imprimir();
+                break;
+            }
+            aux = aux.getSiguiente();
+        }
     }
     
     public void mostrarPorAutor(String autor) {
-        
+        Nodo<Autor> aux = listaAutores.getPrimero();
+        while (aux != null) {
+            if (aux.getDato().getNombre().equals(autor)) {
+                aux.imprimir();
+                aux.getDato().getLibrosEscritos().imprimirDatos();
+                break;
+            }
+            aux = aux.getSiguiente();
+        }
     }
     
     public void mostrarPorTag(String tag) {
-        
+        Nodo<Tag> aux = listaTags.getPrimero();
+        while (aux != null) {
+            if (aux.getDato().getTag().equals(tag)) {
+                aux.imprimir();
+                aux.getDato().getLibrosTagged().imprimirDatos();
+                break;
+            }
+            aux = aux.getSiguiente();
+        }
     }
     
-    public void mostrarDetalles(long isbn) {
-        
+    public void mostrarDetalles(String nombre) {
+        Nodo<Libro> aux = listaLibros.getPrimero();
+        while (aux != null) {
+            if (aux.getDato().getTitulo().equals(nombre)) {
+                aux.imprimir();
+                aux.getDato().getAutores().imprimirDatos();
+                aux.getDato().getTags().imprimirDatos();
+            }
+            aux = aux.getSiguiente();
+        }
     }
     
     public void eliminarAutor(String autor) {
