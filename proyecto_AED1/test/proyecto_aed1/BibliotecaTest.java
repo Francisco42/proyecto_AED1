@@ -17,6 +17,13 @@ import static org.junit.Assert.*;
  * @author usuario
  */
 public class BibliotecaTest {
+    Biblioteca instance;
+    Libro l1 = new Libro("a", 1, (short)1990, 0, 0);
+    Libro l2 = new Libro("b", 2, (short)2018, 0, 0);
+    Libro l3 = new Libro("c", 3, (short)2005, 0, 0);
+    Libro l4 = new Libro("d", 4, (short)1996, 0, 0);
+    Libro l5 = new Libro("e", 5, (short)1998, 0, 0);
+    Libro l6 = new Libro("f", 6, (short)1985, 0, 0);
     
     public BibliotecaTest() {
     }
@@ -31,6 +38,7 @@ public class BibliotecaTest {
     
     @Before
     public void setUp() {
+        instance = new Biblioteca();
     }
     
     @After
@@ -44,12 +52,7 @@ public class BibliotecaTest {
     public void testMostrarUltimasEdiciones() {
         System.out.println("mostrarUltimasEdiciones");
         
-        Libro l1 = new Libro("a", 1, (short)1990, 0, 0);
-        Libro l2 = new Libro("b", 2, (short)2018, 0, 0);
-        Libro l3 = new Libro("c", 3, (short)2005, 0, 0);
-        Libro l4 = new Libro("d", 4, (short)1996, 0, 0);
-        Libro l5 = new Libro("e", 5, (short)1998, 0, 0);
-        Libro l6 = new Libro("f", 6, (short)1985, 0, 0);
+
         
         Biblioteca instance = new Biblioteca();
         
