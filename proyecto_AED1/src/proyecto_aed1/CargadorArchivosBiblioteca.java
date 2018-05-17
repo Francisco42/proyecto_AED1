@@ -11,6 +11,12 @@ package proyecto_aed1;
  */
 public class CargadorArchivosBiblioteca {
     
+    /**
+     * Metodo encargado de transferir la informacion de los libros a la lista
+     * de libros de la biblioteca.
+     * 
+     * @param biblioteca - La biblioteca a la cual se van a agregar libros.
+     */
     public void cargarLibros(Biblioteca biblioteca) {
         String[] libros = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/books.csv");
         for (String libro : libros) {
@@ -28,6 +34,12 @@ public class CargadorArchivosBiblioteca {
         }
     }
     
+    /**
+     * Metodo encargado de transferir la informacion del archivo de autores
+     * a la lista de autores de la biblioteca.
+     * 
+     * @param biblioteca - La biblioteca a la cual se van a agregar autores.
+     */
     public void cargarAutores(Biblioteca biblioteca) {
         String[] autores = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/authors.csv");
         for (String autor : autores) {
@@ -41,6 +53,12 @@ public class CargadorArchivosBiblioteca {
         }
     }
     
+    /**
+     * Metodo encargado de transeferir la informacion del archivo de tags 
+     * a la lista de tags de la biblioteca.
+     * 
+     * @param biblioteca - La biblioteca a la cual se van a agregar tags.
+     */
     public void cargarTags(Biblioteca biblioteca) {
         String[] tags = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/tags.csv");
         for (String tag : tags) {
@@ -54,6 +72,13 @@ public class CargadorArchivosBiblioteca {
         }
     }
     
+    /**
+     * Metodo encargado de agregar las referencias a autores en sus 
+     * respectivos libros y vice versa.
+     * 
+     * @param biblioteca - La biblioteca en la cual se van a realizar las 
+     * asociaciones.
+     */
     public void asociarLibrosAutores(Biblioteca biblioteca) {
         
         Lista<Libro> listaLibros = biblioteca.getListaLibros();
@@ -76,6 +101,13 @@ public class CargadorArchivosBiblioteca {
         }
     }
     
+    /**
+     * Metdod encargado de agregar las referencias a tags en sus 
+     * respectivos libros y vice versa.
+     * 
+     * @param biblioteca - La biblioteca en la cual se van a realizar las 
+     * asociaciones.
+     */
     public void asociarLibrosTags(Biblioteca biblioteca) {
         
         Lista<Libro> listaLibros = biblioteca.getListaLibros();
