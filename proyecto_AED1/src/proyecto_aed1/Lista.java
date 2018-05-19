@@ -3,7 +3,7 @@ package proyecto_aed1;
 
 public class Lista<T> implements ILista<T> {
 
-    private Nodo<T> primero;
+    protected Nodo<T> primero;
 
     public Lista() {
         primero = null;

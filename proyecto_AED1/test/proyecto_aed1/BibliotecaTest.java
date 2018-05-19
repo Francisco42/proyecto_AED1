@@ -39,8 +39,15 @@ public class BibliotecaTest {
     @Before
     public void setUp() {
         instance = new Biblioteca();
+        
+        instance.insertarLibro(1, l1);
+        instance.insertarLibro(2, l2);
+        instance.insertarLibro(3, l3);
+        instance.insertarLibro(4, l4);
+        instance.insertarLibro(5, l5);
+        instance.insertarLibro(6, l6);
+        
     }
-    
     @After
     public void tearDown() {
     }
@@ -52,9 +59,9 @@ public class BibliotecaTest {
     public void testMostrarUltimasEdiciones() {
         System.out.println("mostrarUltimasEdiciones");
         
-
+        Biblioteca expResult = new Biblioteca();
         
-        Biblioteca instance = new Biblioteca();
+        
         
         instance.mostrarUltimasEdiciones(año);
         
