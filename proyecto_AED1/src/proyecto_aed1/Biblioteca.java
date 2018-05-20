@@ -11,14 +11,14 @@ package proyecto_aed1;
  * @author usuario
  */
 public class Biblioteca {
-    private Lista<Libro> listaLibros;
-    private Lista<Tag> listaTags;
-    private Lista<Autor> listaAutores;
+    private ListaLibros listaLibros;
+    private ListaTags listaTags;
+    private ListaAutores listaAutores;
     
     public Biblioteca() {
-        listaLibros = new Lista<>();
-        listaTags = new Lista<>();
-        listaAutores = new Lista<>();
+        listaLibros = new ListaLibros();
+        listaTags = new ListaTags();
+        listaAutores = new ListaAutores();
     }
 
     /**
@@ -26,7 +26,7 @@ public class Biblioteca {
      * 
      * @return - La lista de libros.
      */
-    public Lista<Libro> getListaLibros() {
+    public ListaLibros getListaLibros() {
         return listaLibros;
     }
 
@@ -35,7 +35,7 @@ public class Biblioteca {
      * 
      * @return - La lista de tags.
      */
-    public Lista<Tag> getListaTags() {
+    public ListaTags getListaTags() {
         return listaTags;
     }
 
@@ -44,7 +44,7 @@ public class Biblioteca {
      * 
      * @return - La lista de autores.
      */
-    public Lista<Autor> getListaAutores() {
+    public ListaAutores getListaAutores() {
         return listaAutores;
     }
     
@@ -84,12 +84,9 @@ public class Biblioteca {
      * @param año - El año de criterio.
      */
     public void mostrarUltimasEdiciones(int año) {
-        Nodo<Libro> aux = listaLibros.getPrimero();
-        while (aux != null) {
-            if (aux.getDato().getAño() >= año) {
-                aux.imprimir();
-            }
-            aux = aux.getSiguiente();
+        Lista<Libro> listaAux = listaLibros.mostrarUltimasEdiciones(año);
+        if (listaAux != null) {
+            listaAux.imprimirDatos();
         }
     }
     
@@ -99,12 +96,9 @@ public class Biblioteca {
      * @param titulo - El titulo que se busca.
      */
     public void mostrarPorTitulo(String titulo) {
-        Nodo<Libro> aux = listaLibros.getPrimero();
-        while (aux != null) {
-            if (aux.getDato().getTitulo().equals(titulo)) {
-                aux.imprimir();
-            }
-            aux = aux.getSiguiente();
+        Lista<Libro> listaAux = listaLibros.mostrarPorTitulo(titulo);
+        if (listaAux != null) {
+            listaAux.imprimirDatos();
         }
     }
     
@@ -115,12 +109,9 @@ public class Biblioteca {
      * @param año - El año que se busca.
      */
     public void mostrarPorAño(int año) {
-        Nodo<Libro> aux = listaLibros.getPrimero();
-        while (aux != null) {
-            if (aux.getDato().getAño() == año) {
-                aux.imprimir();
-            }
-            aux = aux.getSiguiente();
+        Lista<Libro> listaAux = listaLibros.mostrarPorAño(año);
+        if (listaAux != null) {
+            listaAux.imprimirDatos();
         }
     }
     
@@ -130,13 +121,9 @@ public class Biblioteca {
      * @param isbn - El ISBN13 que se busca.
      */
     public void mostrarPorISBN(long isbn) {
-        Nodo<Libro> aux = listaLibros.getPrimero();
-        while (aux != null) {
-            if (aux.getDato().getISBN() == isbn) {
-                aux.imprimir();
-                break;
-            }
-            aux = aux.getSiguiente();
+        Libro aux = listaLibros.mostrarPorISBN(isbn);
+        if (aux != null) {
+            System.out.println(aux.toString());
         }
     }
     
@@ -147,14 +134,9 @@ public class Biblioteca {
      * @param autor - El autor que se busca.
      */
     public void mostrarPorAutor(String autor) {
-        Nodo<Autor> aux = listaAutores.getPrimero();
-        while (aux != null) {
-            if (aux.getDato().getNombre().equals(autor)) {
-                aux.imprimir();
-                aux.getDato().getLibrosEscritos().imprimirDatos();
-                break;
-            }
-            aux = aux.getSiguiente();
+        Lista<Libro> listaAux = listaAutores.mostrarPorAutor(autor);
+        if (listaAux != null) {
+            listaAux.imprimirDatos();
         }
     }
     
@@ -164,32 +146,19 @@ public class Biblioteca {
      * @param tag - El tag que se busca.
      */
     public void mostrarPorTag(String tag) {
-        Nodo<Tag> aux = listaTags.getPrimero();
-        while (aux != null) {
-            if (aux.getDato().getTag().equals(tag)) {
-                aux.imprimir();
-                aux.getDato().getLibrosTagged().imprimirDatos();
-                break;
-            }
-            aux = aux.getSiguiente();
+        Lista<Libro> listaAux = listaTags.mostrarPorTag(tag);
+        if (listaAux != null) {
+            listaAux.imprimirDatos();
         }
     }
     
     /**
      * Muestra toda la informacion de un libro, incluyendo sus autores y tags.
      * 
-     * @param nombre - El nombre del libro que se busca.
+     * @param isbn - El ISBN13 del libro que se busca.
      */
-    public void mostrarDetalles(String nombre) {
-        Nodo<Libro> aux = listaLibros.getPrimero();
-        while (aux != null) {
-            if (aux.getDato().getTitulo().equals(nombre)) {
-                aux.imprimir();
-                aux.getDato().getAutores().imprimirDatos();
-                aux.getDato().getTags().imprimirDatos();
-            }
-            aux = aux.getSiguiente();
-        }
+    public void mostrarDetalles(long isbn) {
+        listaLibros.mostrarDetalles(isbn);
     }
     
     /**
@@ -198,7 +167,16 @@ public class Biblioteca {
      * @param autor - El autor a eliminar.
      */
     public void eliminarAutor(String autor) {
-        Nodo<Autor> auxAutor = listaAutores.buscar(autor);
+        
+        Nodo<Autor> auxAutor = listaAutores.getPrimero();
+        while (auxAutor != null) {
+            if (auxAutor.getDato().getNombre().equals(autor)) {
+                break;
+            } else {
+                auxAutor = auxAutor.getSiguiente();
+            }
+        }
+        
         if (auxAutor != null) {
             Autor autorAEliminar = auxAutor.getDato();
             Lista<Libro> librosAEliminar = autorAEliminar.getLibrosEscritos();
@@ -207,7 +185,7 @@ public class Biblioteca {
                 listaLibros.eliminar(aux.getEtiqueta());
                 aux = aux.getSiguiente();
             }
-            listaAutores.eliminar(autor);
+            listaAutores.eliminar(autorAEliminar.getID());
             System.out.println("Eliminación realizada exitosamente.");
         } else {
             System.out.println("No se encontró el autor a eliminar.");

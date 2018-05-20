@@ -87,13 +87,13 @@ public class ListaLibros extends Lista<Libro> {
             }
             aux = aux.getSiguiente();
         }
+        return null;
     }
     
     /**
      * Busca toda la informacion de un libro, incluyendo sus autores y tags.
      * 
-     * @param isbn
-     * @param nombre - El nombre del libro que se busca.
+     * @param isbn - El ISBN13 del libro que se busca.
      */
     public void mostrarDetalles(long isbn) {
         Nodo<Libro> aux = primero;

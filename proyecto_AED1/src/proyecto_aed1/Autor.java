@@ -11,12 +11,23 @@ package proyecto_aed1;
  * @author usuario
  */
 public class Autor {
+    private final int id;
     private final String nombre;
     private Lista<Libro> librosEscritos;
 
-    public Autor(String nombre) {
+    public Autor(int id, String nombre) {
+        this.id = id;
         this.nombre = nombre;
         this.librosEscritos = new Lista<>();
+    }
+
+    /**
+     * Retorna el ID del autor.
+     * 
+     * @return - El ID del autor.
+     */
+    public int getID() {
+        return id;
     }
 
     /**

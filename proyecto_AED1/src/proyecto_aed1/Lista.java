@@ -171,16 +171,20 @@ public class Lista<T> implements ILista<T> {
      * en el mismo orden, false en caso contrario.
      */
     public boolean equals(Lista<T> otraLista) {
-        Nodo<T> aux1 = this.primero;
-        Nodo<T> aux2 = otraLista.getPrimero();
-        while ((aux1 != null) && (aux2 != null)) {
-            if (!aux1.getDato().equals(aux2.getDato())) {
-                return false;
+        if (otraLista != null) {
+            Nodo<T> aux1 = this.primero;
+            Nodo<T> aux2 = otraLista.getPrimero();
+            while ((aux1 != null) && (aux2 != null)) {
+                if (!aux1.getDato().equals(aux2.getDato())) {
+                    return false;
+                }
+                aux1 = aux1.getSiguiente();
+                aux2 = aux2.getSiguiente();
             }
-            aux1 = aux1.getSiguiente();
-            aux2 = aux2.getSiguiente();
+            return !((aux1 != null) || (aux2 != null));
+        } else {
+            return false;
         }
-        return !((aux1 != null) || (aux2 != null));
     }
 
 }

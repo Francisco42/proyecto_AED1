@@ -22,15 +22,17 @@ public class CargadorArchivosBiblioteca {
         for (String libro : libros) {
             String[] partesLibro = libro.split("|");
             
-            int id = Integer.parseInt(partesLibro[0]);
-            String titulo = partesLibro[1];
-            short año = Short.parseShort(partesLibro[2]);
-            float puntaje = Float.parseFloat(partesLibro[3]);
-            int cantidadPuntajes = Integer.parseInt(partesLibro[4]);
-            long isbn13 = Long.parseLong(partesLibro[5].split("/")[1]);
-            
-            Libro lib = new Libro(titulo, isbn13, año, puntaje, cantidadPuntajes);
-            biblioteca.insertarLibro(id, lib);
+            if (partesLibro.length == 6) {
+                int id = Integer.parseInt(partesLibro[0]);
+                String titulo = partesLibro[1];
+                short año = Short.parseShort(partesLibro[2]);
+                float puntaje = Float.parseFloat(partesLibro[3]);
+                int cantidadPuntajes = Integer.parseInt(partesLibro[4]);
+                long isbn13 = Long.parseLong(partesLibro[5].split("/")[1]);
+
+                Libro lib = new Libro(titulo, isbn13, año, puntaje, cantidadPuntajes);
+                biblioteca.insertarLibro(id, lib);
+            }
         }
     }
     
@@ -45,11 +47,13 @@ public class CargadorArchivosBiblioteca {
         for (String autor : autores) {
             String[] partesAutor = autor.split("|");
             
-            int id = Integer.parseInt(partesAutor[0]);
-            String nombre = partesAutor[1];
-            
-            Autor aut = new Autor(nombre);
-            biblioteca.insertarAutor(id, aut);
+            if (partesAutor.length == 2) {
+                int id = Integer.parseInt(partesAutor[0]);
+                String nombre = partesAutor[1];
+
+                Autor aut = new Autor(id, nombre);
+                biblioteca.insertarAutor(id, aut);
+            }
         }
     }
     
@@ -64,11 +68,13 @@ public class CargadorArchivosBiblioteca {
         for (String tag : tags) {
             String[] partesTag = tag.split("|");
             
-            int id = Integer.parseInt(partesTag[0]);
-            String nombre = partesTag[1];
-            
-            Tag tg = new Tag(nombre);
-            biblioteca.insertarTag(id, tg);
+            if (partesTag.length == 2) {
+                int id = Integer.parseInt(partesTag[0]);
+                String nombre = partesTag[1];
+
+                Tag tg = new Tag(nombre);
+                biblioteca.insertarTag(id, tg);
+            }
         }
     }
     
