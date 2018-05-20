@@ -50,7 +50,7 @@ public class Proyecto_AED1 {
         
         System.out.println("Cargando archivo \"LibrosAutores\" (4/5)...");
         cargador.asociarLibrosAutores(biblioteca);
-        System.out.println("Archivo \"Libros\" cargado exitosamente!");
+        System.out.println("Archivo \"LibrosAutores\" cargado exitosamente!");
         System.out.println("");
         
         System.out.println("Cargando archivo \"LibrosTags\" (5/5)...");
