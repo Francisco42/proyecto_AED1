@@ -100,7 +100,11 @@ public class ListaLibros extends Lista<Libro> {
         while (aux != null) {
             if (aux.getDato().getISBN() == isbn) {
                 aux.imprimir();
+                System.out.println("");
+                System.out.println("Autores: ");
                 aux.getDato().getAutores().imprimirDatos();
+                System.out.println("");
+                System.out.println("Tags: ");
                 aux.getDato().getTags().imprimirDatos();
             }
             aux = aux.getSiguiente();

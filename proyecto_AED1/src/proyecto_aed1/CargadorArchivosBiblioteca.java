@@ -5,6 +5,9 @@
  */
 package proyecto_aed1;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author usuario
@@ -20,18 +23,20 @@ public class CargadorArchivosBiblioteca {
     public void cargarLibros(Biblioteca biblioteca) {
         String[] libros = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/books.csv");
         for (String libro : libros) {
-            String[] partesLibro = libro.split("|");
+            String[] partesLibro = libro.split("\\|");
             
-            if (partesLibro.length == 6) {
-                int id = Integer.parseInt(partesLibro[0]);
-                String titulo = partesLibro[1];
-                short año = Short.parseShort(partesLibro[2]);
-                float puntaje = Float.parseFloat(partesLibro[3]);
-                int cantidadPuntajes = Integer.parseInt(partesLibro[4]);
-                long isbn13 = Long.parseLong(partesLibro[5].split("/")[1]);
+            if ((partesLibro.length == 6) && (checkearVacios(partesLibro))) {
+                try {
+                    int id = Integer.parseInt(partesLibro[0]);
+                    String titulo = partesLibro[1];
+                    short año = Short.parseShort(partesLibro[2]);
+                    float puntaje = Float.parseFloat(partesLibro[3]);
+                    int cantidadPuntajes = Integer.parseInt(partesLibro[4]);
+                    long isbn13 = Long.parseLong(partesLibro[5].split("\\/")[1]);
 
-                Libro lib = new Libro(titulo, isbn13, año, puntaje, cantidadPuntajes);
-                biblioteca.insertarLibro(id, lib);
+                    Libro lib = new Libro(titulo, isbn13, año, puntaje, cantidadPuntajes);
+                    biblioteca.insertarLibro(id, lib);
+                } catch (NumberFormatException ex) {}
             }
         }
     }
@@ -45,14 +50,16 @@ public class CargadorArchivosBiblioteca {
     public void cargarAutores(Biblioteca biblioteca) {
         String[] autores = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/authors.csv");
         for (String autor : autores) {
-            String[] partesAutor = autor.split("|");
+            String[] partesAutor = autor.split("\\|");
             
-            if (partesAutor.length == 2) {
-                int id = Integer.parseInt(partesAutor[0]);
-                String nombre = partesAutor[1];
+            if ((partesAutor.length == 2) && (checkearVacios(partesAutor))) {
+                try {
+                    int id = Integer.parseInt(partesAutor[0]);
+                    String nombre = partesAutor[1];
 
-                Autor aut = new Autor(id, nombre);
-                biblioteca.insertarAutor(id, aut);
+                    Autor aut = new Autor(id, nombre);
+                    biblioteca.insertarAutor(id, aut);
+                } catch (NumberFormatException ex) {}
             }
         }
     }
@@ -66,14 +73,16 @@ public class CargadorArchivosBiblioteca {
     public void cargarTags(Biblioteca biblioteca) {
         String[] tags = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/tags.csv");
         for (String tag : tags) {
-            String[] partesTag = tag.split("|");
+            String[] partesTag = tag.split("\\|");
             
-            if (partesTag.length == 2) {
-                int id = Integer.parseInt(partesTag[0]);
-                String nombre = partesTag[1];
+            if ((partesTag.length == 2) && (checkearVacios(partesTag))) {
+                try {
+                    int id = Integer.parseInt(partesTag[0]);
+                    String nombre = partesTag[1];
 
-                Tag tg = new Tag(nombre);
-                biblioteca.insertarTag(id, tg);
+                    Tag tg = new Tag(nombre);
+                    biblioteca.insertarTag(id, tg);
+                } catch (NumberFormatException ex) {}
             }
         }
     }
@@ -94,16 +103,20 @@ public class CargadorArchivosBiblioteca {
         String[] librosAutores = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/bookauthors.csv");
         
         for (String libroAutor : librosAutores) {
-            String[] partes = libroAutor.split("|");
+            String[] partes = libroAutor.split("\\|");
             
-            int idLibro = Integer.parseInt(partes[0]);
-            int idAutor = Integer.parseInt(partes[1]);
-            
-            Libro libro = listaLibros.buscar(idLibro).getDato();
-            Autor autor = listaAutores.buscar(idAutor).getDato();
-            
-            libro.insertarAutor(idAutor, autor);
-            autor.insertarLibro(idLibro, libro);
+            if ((partes.length == 2) && (checkearVacios(partes))) {
+                try {
+                    int idLibro = Integer.parseInt(partes[0]);
+                    int idAutor = Integer.parseInt(partes[1]);
+                    
+                    Libro libro = listaLibros.buscar(idLibro).getDato();
+                    Autor autor = listaAutores.buscar(idAutor).getDato();
+
+                    libro.insertarAutor(idAutor, autor);
+                    autor.insertarLibro(idLibro, libro);
+                } catch (NumberFormatException | NullPointerException ex) {}
+            }
         }
     }
     
@@ -123,16 +136,39 @@ public class CargadorArchivosBiblioteca {
         String[] librosTags = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/booktags.csv");
         
         for (String libroTag : librosTags) {
-            String[] partes = libroTag.split("|");
+            String[] partes = libroTag.split("\\|");
             
-            int idLibro = Integer.parseInt(partes[0]);
-            int idTag = Integer.parseInt(partes[1]);
-            
-            Libro libro = listaLibros.buscar(idLibro).getDato();
-            Tag tag = listaTags.buscar(idTag).getDato();
-            
-            libro.insertarTag(idTag, tag);
-            tag.insertarLibro(idLibro, libro);
+            if ((partes.length == 2) && (checkearVacios(partes))) {
+                try {
+                    int idLibro = Integer.parseInt(partes[0]);
+                    int idTag = Integer.parseInt(partes[1]);
+
+                    Libro libro = listaLibros.buscar(idLibro).getDato();
+                    Tag tag = listaTags.buscar(idTag).getDato();
+
+                    libro.insertarTag(idTag, tag);
+                    tag.insertarLibro(idLibro, libro);
+                } catch (NumberFormatException | NullPointerException ex) {}
+            }
         }
     }
+    
+    private boolean checkearVacios(String[] lista) {
+        for (String s : lista) {
+            if (s.equals("")) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+//    public static String[] eliminarVacios(String[] array) {
+//        List nueva = new LinkedList();
+//
+//        for(String str : array)
+//            if(!str.equals(""))
+//                nueva.add(str);
+//
+//        return (String[]) nueva.toArray(array);
+//    }
 }

@@ -87,7 +87,11 @@ public class Biblioteca {
         Lista<Libro> listaAux = listaLibros.mostrarUltimasEdiciones(año);
         if (listaAux != null) {
             listaAux.imprimirDatos();
+            if (listaAux.esVacia()) {
+                System.out.println("No se encontraron libros que cumplan con el criterio");
+            }
         }
+        
     }
     
     /**
@@ -99,6 +103,9 @@ public class Biblioteca {
         Lista<Libro> listaAux = listaLibros.mostrarPorTitulo(titulo);
         if (listaAux != null) {
             listaAux.imprimirDatos();
+            if (listaAux.esVacia()) {
+                System.out.println("No se encontraron libros que cumplan con el criterio");
+            }
         }
     }
     
@@ -112,6 +119,9 @@ public class Biblioteca {
         Lista<Libro> listaAux = listaLibros.mostrarPorAño(año);
         if (listaAux != null) {
             listaAux.imprimirDatos();
+            if (listaAux.esVacia()) {
+                System.out.println("No se encontraron libros que cumplan con el criterio");
+            }
         }
     }
     
@@ -124,6 +134,8 @@ public class Biblioteca {
         Libro aux = listaLibros.mostrarPorISBN(isbn);
         if (aux != null) {
             System.out.println(aux.toString());
+        } else {
+            System.out.println("No se encontraron libros que cumplan con el criterio");
         }
     }
     
@@ -137,6 +149,9 @@ public class Biblioteca {
         Lista<Libro> listaAux = listaAutores.mostrarPorAutor(autor);
         if (listaAux != null) {
             listaAux.imprimirDatos();
+            if (listaAux.esVacia()) {
+                System.out.println("No se encontraron libros que cumplan con el criterio");
+            }
         }
     }
     
@@ -149,6 +164,9 @@ public class Biblioteca {
         Lista<Libro> listaAux = listaTags.mostrarPorTag(tag);
         if (listaAux != null) {
             listaAux.imprimirDatos();
+            if (listaAux.esVacia()) {
+                System.out.println("No se encontraron libros que cumplan con el criterio");
+            }
         }
     }
     

@@ -115,6 +115,6 @@ public class Libro {
     
     @Override
     public String toString() {
-        return "Libro: " + titulo + " Año: " + año + " ISBN: " + isbn;
+        return "Libro: " + titulo + "    Año: " + año + "    ISBN: " + isbn + "    Puntaje: " + puntaje + " (" + cantidadPuntajes + " puntuaciones)";
     }
 }
