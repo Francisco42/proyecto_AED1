@@ -13,11 +13,11 @@ public class ManejadorArchivosGenerico {
     
     /**
      * @param nombreCompletoArchivo
-     * @param listaLineasArchivo - lista con las lineas del archivo       
-     * @throws IOException
+     * @param listaLineasArchivo - lista con las lineas del archivo
+     * @throws java.io.IOException
      */
     public static void escribirArchivo(String nombreCompletoArchivo,
-        String[] listaLineasArchivo) {
+        String[] listaLineasArchivo) throws IOException {
         FileWriter fw;
         try {
             fw = new FileWriter(nombreCompletoArchivo, true);
@@ -35,7 +35,7 @@ public class ManejadorArchivosGenerico {
         }
     }
 
-    public static String[] leerArchivo(String nombreCompletoArchivo) {
+    public static String[] leerArchivo(String nombreCompletoArchivo) throws IOException {
         FileReader fr;
         ArrayList<String> listaLineasArchivo = new ArrayList<String>();
         try {

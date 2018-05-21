@@ -161,14 +161,4 @@ public class CargadorArchivosBiblioteca {
         }
         return true;
     }
-    
-//    public static String[] eliminarVacios(String[] array) {
-//        List nueva = new LinkedList();
-//
-//        for(String str : array)
-//            if(!str.equals(""))
-//                nueva.add(str);
-//
-//        return (String[]) nueva.toArray(array);
-//    }
 }

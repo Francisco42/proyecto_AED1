@@ -20,16 +20,6 @@ public class Proyecto_AED1 {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here  
-//        String h = "asd|sder||wrg";
-//        String[] hs = h.split("\\|");
-//        for (String s : hs) {
-//            System.out.println(s);
-//        }
-//        //hs.removeAll(Arrays.asList("\\|", null));
-//        
-//        for (String s : hs) {
-//            System.out.println(s);
-//        }
         Biblioteca biblioteca = new Biblioteca();
         CargadorArchivosBiblioteca cargador = new CargadorArchivosBiblioteca();
         
@@ -79,71 +69,75 @@ public class Proyecto_AED1 {
             System.out.println(menu);
             String linea1 = buffer.readLine();
             String linea2;
-            switch (linea1) {
-                
-                case "1":
-                    System.out.println("Ingrese el titulo a buscar");
-                    linea2 = buffer.readLine();
-                    System.out.println("");
-                    biblioteca.mostrarPorTitulo(linea2);
-                    break;
-                    
-                case "2":
-                    System.out.println("Ingrese el año a buscar");
-                    linea2 = buffer.readLine();
-                    System.out.println("");
-                    biblioteca.mostrarPorAño(Integer.parseInt(linea2));
-                    break;
-                    
-                case "3":
-                    System.out.println("Ingrese el ISBN13 a buscar");
-                    linea2 = buffer.readLine();
-                    System.out.println("");
-                    biblioteca.mostrarPorISBN(Long.parseLong(linea2));
-                    break;
-                    
-                case "4":
-                    System.out.println("Ingrese el autor a buscar");
-                    linea2 = buffer.readLine();
-                    System.out.println("");
-                    biblioteca.mostrarPorAutor(linea2);
-                    break;
-                    
-                case "5":
-                    System.out.println("Ingrese el tag a buscar");
-                    linea2 = buffer.readLine();
-                    System.out.println("");
-                    biblioteca.mostrarPorTag(linea2);
-                    break;
-                    
-                case "6":
-                    System.out.println("Ingrese el año a buscar");
-                    linea2 = buffer.readLine();
-                    System.out.println("");
-                    biblioteca.mostrarUltimasEdiciones(Integer.parseInt(linea2));
-                    break;
-                    
-                case "7":
-                    System.out.println("Ingrese el ISBN13 del libro a buscar");
-                    linea2 = buffer.readLine();
-                    System.out.println("");
-                    biblioteca.mostrarDetalles(Long.parseLong(linea2));
-                    break;
-                    
-                case "8":
-                    System.out.println("Ingrese el autor a eliminar");
-                    linea2 = buffer.readLine();
-                    System.out.println("");
-                    biblioteca.eliminarAutor(linea2);
-                    break;
-                    
-                case "9":
-                    salir = true;
-                    break;
-                    
-                default:
-                    System.out.println("La opcion ingresada no es valida");
-                    break;
+            try {
+                switch (linea1) {
+
+                    case "1":
+                        System.out.println("Ingrese el titulo a buscar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.mostrarPorTitulo(linea2);
+                        break;
+
+                    case "2":
+                        System.out.println("Ingrese el año a buscar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.mostrarPorAño(Integer.parseInt(linea2));
+                        break;
+
+                    case "3":
+                        System.out.println("Ingrese el ISBN13 a buscar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.mostrarPorISBN(Long.parseLong(linea2));
+                        break;
+
+                    case "4":
+                        System.out.println("Ingrese el autor a buscar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.mostrarPorAutor(linea2);
+                        break;
+
+                    case "5":
+                        System.out.println("Ingrese el tag a buscar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.mostrarPorTag(linea2);
+                        break;
+
+                    case "6":
+                        System.out.println("Ingrese el año a buscar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.mostrarUltimasEdiciones(Integer.parseInt(linea2));
+                        break;
+
+                    case "7":
+                        System.out.println("Ingrese el ISBN13 del libro a buscar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.mostrarDetalles(Long.parseLong(linea2));
+                        break;
+
+                    case "8":
+                        System.out.println("Ingrese el autor a eliminar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.eliminarAutor(linea2);
+                        break;
+
+                    case "9":
+                        salir = true;
+                        break;
+
+                    default:
+                        System.out.println("La opcion ingresada no es valida");
+                        break;
+                }
+            } catch (NumberFormatException ex) {
+                System.out.println("El criterio ingresado no es valido");
             }
         }
     }  

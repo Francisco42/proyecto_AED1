@@ -18,7 +18,9 @@
     mostrarDetalles(isbn de tipo long)
     COMIENZO
 	nodo <- listaLibros.buscar(isbn)
-	nodo.dato.imprimirDetalles
+	nodo.imprimir
+	nodo.dato.autores.imprimirDatos
+	nodo.dato.tags.imprimirDatos
     FIN
 
 
