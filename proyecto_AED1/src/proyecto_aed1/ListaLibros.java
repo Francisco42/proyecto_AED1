@@ -6,7 +6,8 @@
 package proyecto_aed1;
 
 /**
- *
+ * Extiende el TDALista, con el tipo Libro.
+ * 
  * @author usuario
  */
 public class ListaLibros extends Lista<Libro> {

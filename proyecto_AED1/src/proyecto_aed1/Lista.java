@@ -1,6 +1,11 @@
 package proyecto_aed1;
 
-
+/**
+ * Representa al TDALista.
+ * 
+ * @author Francisco
+ * @param <T> - El tipo de los datos que llevan los nodos de la lista.
+ */
 public class Lista<T> implements ILista<T> {
 
     protected Nodo<T> primero;

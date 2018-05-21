@@ -1,5 +1,11 @@
 package proyecto_aed1;
 
+/**
+ * Interfaz a ser implementada por al entidad Nodo.
+ * 
+ * @author Francisco
+ * @param <T> - El tipo del dato del nodo.
+ */
 public interface INodo<T> {
 
     /**

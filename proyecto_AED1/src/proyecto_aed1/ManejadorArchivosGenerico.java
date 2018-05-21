@@ -9,15 +9,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Clase encargada de leer y escribir archivos de texto.
+ * 
+ * @author
+ */
 public class ManejadorArchivosGenerico {
     
     /**
-     * @param nombreCompletoArchivo
+     * Escribe lineas de texto en un archivo.
+     * 
+     * @param nombreCompletoArchivo - La ruta y nombre del archivo.
      * @param listaLineasArchivo - lista con las lineas del archivo
-     * @throws java.io.IOException
      */
     public static void escribirArchivo(String nombreCompletoArchivo,
-        String[] listaLineasArchivo) throws IOException {
+        String[] listaLineasArchivo) {
         FileWriter fw;
         try {
             fw = new FileWriter(nombreCompletoArchivo, true);
@@ -35,7 +41,13 @@ public class ManejadorArchivosGenerico {
         }
     }
 
-    public static String[] leerArchivo(String nombreCompletoArchivo) throws IOException {
+    /**
+     * Lee las lineas de texto de un archivo.
+     * 
+     * @param nombreCompletoArchivo - La ruta y nombre del archivo.
+     * @return Lista con las lineas de texto del archivo.
+     */
+    public static String[] leerArchivo(String nombreCompletoArchivo) {
         FileReader fr;
         ArrayList<String> listaLineasArchivo = new ArrayList<String>();
         try {

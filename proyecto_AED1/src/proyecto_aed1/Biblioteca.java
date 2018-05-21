@@ -8,7 +8,7 @@ package proyecto_aed1;
 /**
  * Representa la entidad Biblioteca.
  * 
- * @author usuario
+ * @author Francisco
  */
 public class Biblioteca {
     private ListaLibros listaLibros;

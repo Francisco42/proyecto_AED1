@@ -1,6 +1,11 @@
 package proyecto_aed1;
 
-
+/**
+ * Interfaz a ser implentada por el TDALista.
+ * 
+ * @author Francisco
+ * @param <T> - El tipo de los datos de los nodos de la lista.
+ */
 public interface ILista<T> {
 
     /**
@@ -64,5 +69,10 @@ public interface ILista<T> {
      */
     public Nodo<T> getPrimero();
 
+    /**
+     * Remueve y retorna el primer nodo de la lista.
+     * 
+     * @return Primer nodo de la lista.
+     */
     public Nodo<T> quitarPrimero();
 }

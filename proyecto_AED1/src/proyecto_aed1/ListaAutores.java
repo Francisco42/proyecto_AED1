@@ -6,7 +6,8 @@
 package proyecto_aed1;
 
 /**
- *
+ * Extiende el TDALista, con el tipo Autor.
+ * 
  * @author Francisco
  */
 public class ListaAutores extends Lista<Autor> {

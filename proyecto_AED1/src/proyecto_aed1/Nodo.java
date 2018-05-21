@@ -1,9 +1,10 @@
 package proyecto_aed1;
 
 /**
- *
+ * Representa la entidad Nodo.
+ * 
  * @author ernesto
- * @param <T>
+ * @param <T> - El tipo del dato que lleva el nodo.
  */
 public class Nodo<T> implements INodo<T> {
 

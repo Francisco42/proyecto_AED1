@@ -8,7 +8,7 @@ package proyecto_aed1;
 /**
  * Representa la entidad Autor
  * 
- * @author usuario
+ * @author Francisco
  */
 public class Autor {
     private final int id;
