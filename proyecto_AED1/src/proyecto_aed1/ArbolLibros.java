@@ -83,21 +83,20 @@ public class ArbolLibros extends TArbolBB<Libro> {
     /**
      * Busca toda la informacion de un libro, incluyendo sus autores y tags.
      * 
-     * @param isbn - El ISBN13 del libro que se busca.
+     * @param titulo - El titulo del libro que se busca.
      */
-    public void mostrarDetalles(long isbn) {
-        Nodo<Libro> aux = primero;
-        while (aux != null) {
-            if (aux.getDato().getISBN() == isbn) {
-                aux.imprimir();
-                System.out.println("");
-                System.out.println("Autores: ");
-                aux.getDato().getAutores().imprimirDatos();
-                System.out.println("");
-                System.out.println("Tags: ");
-                aux.getDato().getTags().imprimirDatos();
-            }
-            aux = aux.getSiguiente();
+    public void mostrarDetalles(String titulo) {
+        IElementoAB<Libro> aux = buscar(titulo);
+        if (aux != null) {
+            aux.imprimirDato();
+            System.out.println("");
+            System.out.println("Autores: ");
+            aux.getDatos().getAutores().imprimirDatos();
+            System.out.println("");
+            System.out.println("Tags: ");
+            aux.getDatos().getTags().imprimirDatos();
+        } else {
+            System.out.println("No se encontró el libro");
         }
     }
 }

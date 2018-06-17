@@ -10,13 +10,9 @@ package proyecto_aed1;
  * 
  * @author Francisco
  */
-public class ListaTags extends Lista<Tag> {
+public class ArbolTags extends TArbolBB<Tag> {
 
-    public ListaTags() {
-    }
-
-    public ListaTags(Nodo<Tag> unNodo) {
-        super(unNodo);
+    public ArbolTags() {
     }
     
     /**
@@ -26,14 +22,11 @@ public class ListaTags extends Lista<Tag> {
      * @return - Los libros que llevan ese tag.
      */
     public Lista<Libro> mostrarPorTag(String tag) {
-        Nodo<Tag> aux = primero;
-        while (aux != null) {
-            if (aux.getDato().getTag().equals(tag)) {
-                aux.imprimir();
-                return aux.getDato().getLibrosTagged();
-            }
-            aux = aux.getSiguiente();
+        IElementoAB<Tag> aux = buscar(tag);
+        if (aux != null) {
+            return aux.getDatos().getLibrosTagged();
+        } else {
+            return null;
         }
-        return null;
     }
 }

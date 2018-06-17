@@ -11,6 +11,7 @@ package proyecto_aed1;
  * @author Francisco
  */
 public class Libro {
+    private final int id;
     private final String titulo;
     private final long isbn;
     private final short año;
@@ -19,7 +20,8 @@ public class Libro {
     private Lista<Tag> tags;
     private Lista<Autor> autores;
 
-    public Libro(String titulo, long isbn, short año, float puntaje, int cantidadPuntajes) {
+    public Libro(int id, String titulo, long isbn, short año, float puntaje, int cantidadPuntajes) {
+        this.id = id;
         this.titulo = titulo;
         this.isbn = isbn;
         this.año = año;
@@ -27,6 +29,10 @@ public class Libro {
         this.cantidadPuntajes = cantidadPuntajes;
         this.tags = new Lista<>();
         this.autores = new Lista<>();
+    }
+    
+    public int getID() {
+        return id;
     }
     
     /**
@@ -98,8 +104,8 @@ public class Libro {
      * @param id - El id del autor a insertar.
      * @param autor - El autor a insertar.
      */
-    public void insertarAutor(int id, Autor autor) {
-        autores.insertar(new Nodo<>(id, autor));
+    public void insertarAutor(Autor autor) {
+        autores.insertar(new Nodo<>(autor.getNombre(), autor));
     }
     
     
@@ -109,8 +115,8 @@ public class Libro {
      * @param id - El id del tag a insertar.
      * @param tag - El tag a insertar.
      */
-    public void insertarTag(int id, Tag tag) {
-        tags.insertar(new Nodo<>(id, tag));
+    public void insertarTag(Tag tag) {
+        tags.insertar(new Nodo<>(tag.getTag(), tag));
     }
     
     @Override

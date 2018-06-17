@@ -34,8 +34,8 @@ public class CargadorArchivosBiblioteca {
                     int cantidadPuntajes = Integer.parseInt(partesLibro[4]);
                     long isbn13 = Long.parseLong(partesLibro[5].split("\\/")[1]);
                     
-                    Libro lib = new Libro(titulo, isbn13, año, puntaje, cantidadPuntajes);
-                    biblioteca.insertarLibro(id, lib);
+                    Libro lib = new Libro(id, titulo, isbn13, año, puntaje, cantidadPuntajes);
+                    biblioteca.insertarLibro(lib);
                 } catch (NumberFormatException ex) {}
             }
         }
@@ -58,7 +58,7 @@ public class CargadorArchivosBiblioteca {
                     String nombre = partesAutor[1];
                     
                     Autor aut = new Autor(id, nombre);
-                    biblioteca.insertarAutor(id, aut);
+                    biblioteca.insertarAutor(aut);
                 } catch (NumberFormatException ex) {}
             }
         }
@@ -80,8 +80,8 @@ public class CargadorArchivosBiblioteca {
                     int id = Integer.parseInt(partesTag[0]);
                     String nombre = partesTag[1];
                     
-                    Tag tg = new Tag(nombre);
-                    biblioteca.insertarTag(id, tg);
+                    Tag tg = new Tag(id, nombre);
+                    biblioteca.insertarTag(tg);
                 } catch (NumberFormatException ex) {}
             }
         }
@@ -96,8 +96,8 @@ public class CargadorArchivosBiblioteca {
      */
     public void asociarLibrosAutores(Biblioteca biblioteca) {
         
-        Lista<Libro> listaLibros = biblioteca.getListaLibros();
-        Lista<Autor> listaAutores = biblioteca.getListaAutores();
+        ArbolLibros arbolLibros = biblioteca.getArbolLibros();
+        ArbolAutores arbolAutores = biblioteca.getArbolAutores();
         String[] librosAutores = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/bookauthors.csv");
         for (String libroAutor : librosAutores) {
             String[] partes = libroAutor.split("\\|");
@@ -107,11 +107,25 @@ public class CargadorArchivosBiblioteca {
                     int idLibro = Integer.parseInt(partes[0]);
                     int idAutor = Integer.parseInt(partes[1]);
                     
-                    Libro libro = listaLibros.buscar(idLibro).getDato();
-                    Autor autor = listaAutores.buscar(idAutor).getDato();
+                    Libro libro = null;
+                    Autor autor = null;
                     
-                    libro.insertarAutor(idAutor, autor);
-                    autor.insertarLibro(idLibro, libro);
+                    for (Libro libroAux : arbolLibros.inordenDatos()) {
+                        if (libroAux.getID() == idLibro) {
+                            libro = libroAux;
+                            break;
+                        }
+                    }
+                    for (Autor autorAux : arbolAutores.inordenDatos()) {
+                        if (autorAux.getID() == idAutor) {
+                            autor = autorAux;
+                            break;
+                        }
+                    }
+
+                    libro.insertarAutor(autor);
+                    autor.insertarLibro(libro);
+
                 } catch (NumberFormatException | NullPointerException ex) {}
             }
         }
@@ -126,8 +140,8 @@ public class CargadorArchivosBiblioteca {
      */
     public void asociarLibrosTags(Biblioteca biblioteca) {
         
-        Lista<Libro> listaLibros = biblioteca.getListaLibros();
-        Lista<Tag> listaTags = biblioteca.getListaTags();
+        ArbolLibros arbolLibros = biblioteca.getArbolLibros();
+        ArbolTags arbolTags = biblioteca.getArbolTags();
         String[] librosTags = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/booktags.csv");
         for (String libroTag : librosTags) {
             String[] partes = libroTag.split("\\|");
@@ -137,11 +151,24 @@ public class CargadorArchivosBiblioteca {
                     int idLibro = Integer.parseInt(partes[0]);
                     int idTag = Integer.parseInt(partes[1]);
                     
-                    Libro libro = listaLibros.buscar(idLibro).getDato();
-                    Tag tag = listaTags.buscar(idTag).getDato();
+                    Libro libro = null;
+                    Tag tag = null;
                     
-                    libro.insertarTag(idTag, tag);
-                    tag.insertarLibro(idLibro, libro);
+                    for (Libro libroAux : arbolLibros.inordenDatos()) {
+                        if (libroAux.getID() == idLibro) {
+                            libro = libroAux;
+                            break;
+                        }
+                    }
+                    for (Tag tagAux : arbolTags.inordenDatos()) {
+                        if (tagAux.getID() == idTag) {
+                            tag = tagAux;
+                            break;
+                        }
+                    }
+                    
+                    libro.insertarTag(tag);
+                    tag.insertarLibro(libro);
                 } catch (NumberFormatException | NullPointerException ex) {}
             }
         }

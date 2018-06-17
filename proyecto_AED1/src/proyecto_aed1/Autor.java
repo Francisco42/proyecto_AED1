@@ -54,8 +54,8 @@ public class Autor {
      * @param id - El id del libro a insertar.
      * @param libro - El libro insertar.
      */
-    public void insertarLibro(int id, Libro libro) {
-        librosEscritos.insertar(new Nodo<>(id, libro));
+    public void insertarLibro(Libro libro) {
+        librosEscritos.insertar(new Nodo<>(libro.getTitulo(), libro));
     }
     
     @Override

@@ -11,12 +11,18 @@ package proyecto_aed1;
  * @author usuario
  */
 public class Tag {
+    private final int id;
     private final String tag;
     private Lista<Libro> librosTagged;
 
-    public Tag(String tag) {
+    public Tag(int id, String tag) {
+        this.id = id;
         this.tag = tag;
         this.librosTagged = new Lista<>();
+    }
+    
+    public int getID() {
+        return id;
     }
 
     /**
@@ -43,8 +49,8 @@ public class Tag {
      * @param id - El id del libro a insertar.
      * @param libro - El libro a insertar.
      */
-    public void insertarLibro(int id, Libro libro) {
-        librosTagged.insertar(new Nodo<>(id, libro));
+    public void insertarLibro(Libro libro) {
+        librosTagged.insertar(new Nodo<>(libro.getTitulo(), libro));
     }
     
     @Override

@@ -102,4 +102,6 @@ public interface IElementoAB<T> {
      * @return String conteniendo el PostOrden
      */
     public String postOrden();
+    
+    public String imprimirDato();
 }

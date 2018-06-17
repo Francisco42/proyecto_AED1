@@ -61,7 +61,8 @@ public class Proyecto_AED1 {
                 + "6 - Buscar las ultimas ediciones a partir de una año\n"
                 + "7 - Mostrar los detalles de un libro en particular (a partir de su ISBN13)\n"
                 + "8 - Eliminar un autor de la biblioteca y todos sus libros asociados\n"
-                + "9 - Salir del programa\n";
+                + "9 - Eliminar un tag de la biblioteca y removerlo de todos sus libros asociados\n"
+                + "10 - Salir del programa\n";
         
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         boolean salir = false;
@@ -119,7 +120,7 @@ public class Proyecto_AED1 {
                         System.out.println("Ingrese el ISBN13 del libro a buscar");
                         linea2 = buffer.readLine();
                         System.out.println("");
-                        biblioteca.mostrarDetalles(Long.parseLong(linea2));
+                        biblioteca.mostrarDetalles(linea2);
                         break;
 
                     case "8":
@@ -128,8 +129,15 @@ public class Proyecto_AED1 {
                         System.out.println("");
                         biblioteca.eliminarAutor(linea2);
                         break;
-
+                        
                     case "9":
+                        System.out.println("Ingrese el tag a eliminar");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.eliminarTag(linea2);
+                        break;
+
+                    case "10":
                         salir = true;
                         break;
 

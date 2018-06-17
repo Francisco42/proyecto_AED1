@@ -162,6 +162,11 @@ public class TElementoAB<T> implements IElementoAB<T> {
     public String imprimir() {
         return (etiqueta.toString());
     }
+    
+    @Override
+    public String imprimirDato() {
+        return datos.toString();
+    }
 
     @Override
     public T getDatos() {

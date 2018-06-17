@@ -5,18 +5,16 @@
  */
 package proyecto_aed1;
 
+import java.util.LinkedList;
+
 /**
  * Extiende el TDALista, con el tipo Autor.
  * 
  * @author Francisco
  */
-public class ListaAutores extends Lista<Autor> {
+public class ArbolAutores extends TArbolBB<Autor> {
 
-    public ListaAutores() {
-    }
-
-    public ListaAutores(Nodo<Autor> unNodo) {
-        super(unNodo);
+    public ArbolAutores() {
     }
     
     /**
@@ -27,14 +25,11 @@ public class ListaAutores extends Lista<Autor> {
      * @return - Los libros escritos por ese autor.
      */
     public Lista<Libro> mostrarPorAutor(String autor) {
-        Nodo<Autor> aux = primero;
-        while (aux != null) {
-            if (aux.getDato().getNombre().equals(autor)) {
-                aux.imprimir();
-                return aux.getDato().getLibrosEscritos();
-            }
-            aux = aux.getSiguiente();
+        IElementoAB<Autor> aux = buscar(autor);
+        if (aux != null) {
+            return aux.getDatos().getLibrosEscritos();
+        } else {
+            return null;
         }
-        return null;
     }
 }

@@ -5,20 +5,24 @@
  */
 package proyecto_aed1;
 
+import java.util.LinkedList;
+
 /**
  * Representa la entidad Biblioteca.
  * 
  * @author Francisco
  */
 public class Biblioteca {
-    private ListaLibros listaLibros;
-    private ListaTags listaTags;
-    private ListaAutores listaAutores;
+    private ArbolLibros arbolLibros;
+    private ArbolTags arbolTags;
+    private ArbolAutores arbolAutores;
+    private ArbolLibros arbolLibrosUntagged;
     
     public Biblioteca() {
-        listaLibros = new ListaLibros();
-        listaTags = new ListaTags();
-        listaAutores = new ListaAutores();
+        arbolLibros = new ArbolLibros();
+        arbolTags = new ArbolTags();
+        arbolAutores = new ArbolAutores();
+        arbolLibrosUntagged = new ArbolLibros();
     }
 
     /**
@@ -26,8 +30,8 @@ public class Biblioteca {
      * 
      * @return - La lista de libros.
      */
-    public ListaLibros getListaLibros() {
-        return listaLibros;
+    public ArbolLibros getArbolLibros() {
+        return arbolLibros;
     }
 
     /**
@@ -35,8 +39,8 @@ public class Biblioteca {
      * 
      * @return - La lista de tags.
      */
-    public ListaTags getListaTags() {
-        return listaTags;
+    public ArbolTags getArbolTags() {
+        return arbolTags;
     }
 
     /**
@@ -44,8 +48,12 @@ public class Biblioteca {
      * 
      * @return - La lista de autores.
      */
-    public ListaAutores getListaAutores() {
-        return listaAutores;
+    public ArbolAutores getArbolAutores() {
+        return arbolAutores;
+    }
+    
+    public ArbolLibros getArbolLibrosUntagged() {
+        return arbolLibrosUntagged;
     }
     
     /**
@@ -54,8 +62,8 @@ public class Biblioteca {
      * @param id - El id del libro a insertar.
      * @param libro - El libro a insertar.
      */
-    public void insertarLibro(int id, Libro libro) {
-        listaLibros.insertar(new Nodo<>(id, libro));
+    public void insertarLibro(Libro libro) {
+        arbolLibros.insertar(new TElementoAB<>(libro.getTitulo(), libro));
     }
     
     /**
@@ -64,8 +72,8 @@ public class Biblioteca {
      * @param id - El id del autor a insertar.
      * @param autor - El autor a insertar.
      */
-    public void insertarAutor(int id, Autor autor) {
-        listaAutores.insertar(new Nodo<>(id, autor));
+    public void insertarAutor(Autor autor) {
+        arbolAutores.insertar(new TElementoAB<>(autor.getNombre(), autor));
     }
     
     /**
@@ -74,8 +82,8 @@ public class Biblioteca {
      * @param id - El id del tag a insertar.
      * @param tag - El tag a insertar.
      */
-    public void insertarTag(int id, Tag tag) {
-        listaTags.insertar(new Nodo<>(id, tag));
+    public void insertarTag(Tag tag) {
+        arbolTags.insertar(new TElementoAB<>(tag.getTag(), tag));
     }
     
     /**
@@ -84,14 +92,13 @@ public class Biblioteca {
      * @param año - El año de criterio.
      */
     public void mostrarUltimasEdiciones(int año) {
-        Lista<Libro> listaAux = listaLibros.mostrarUltimasEdiciones(año);
-        if (listaAux != null) {
-            listaAux.imprimirDatos();
-            if (listaAux.esVacia()) {
-                System.out.println("No se encontraron libros que cumplan con el criterio");
-            }
+        LinkedList<Libro> listaAux = arbolLibros.mostrarUltimasEdiciones(año);
+        if (listaAux.isEmpty()) {
+            System.out.println("No se encontraron libros que cumplan con el criterio");
         }
-        
+        for (Libro libro : listaAux) {
+            System.out.println(libro.toString());
+        }   
     }
     
     /**
@@ -100,12 +107,11 @@ public class Biblioteca {
      * @param titulo - El titulo que se busca.
      */
     public void mostrarPorTitulo(String titulo) {
-        Lista<Libro> listaAux = listaLibros.mostrarPorTitulo(titulo);
-        if (listaAux != null) {
-            listaAux.imprimirDatos();
-            if (listaAux.esVacia()) {
-                System.out.println("No se encontraron libros que cumplan con el criterio");
-            }
+        Libro libro = arbolLibros.mostrarPorTitulo(titulo);
+        if (libro != null) {
+            System.out.println(libro.toString());
+        } else {
+            System.out.println("No se encontraron libros que cumplan con el criterio");
         }
     }
     
@@ -116,13 +122,13 @@ public class Biblioteca {
      * @param año - El año que se busca.
      */
     public void mostrarPorAño(int año) {
-        Lista<Libro> listaAux = listaLibros.mostrarPorAño(año);
-        if (listaAux != null) {
-            listaAux.imprimirDatos();
-            if (listaAux.esVacia()) {
-                System.out.println("No se encontraron libros que cumplan con el criterio");
-            }
+        LinkedList<Libro> listaAux = arbolLibros.mostrarPorAño(año);
+        if (listaAux.isEmpty()) {
+            System.out.println("No se encontraron libros que cumplan con el criterio");
         }
+        for (Libro libro : listaAux) {
+            System.out.println(libro.toString());
+        }  
     }
     
     /**
@@ -131,9 +137,9 @@ public class Biblioteca {
      * @param isbn - El ISBN13 que se busca.
      */
     public void mostrarPorISBN(long isbn) {
-        Libro aux = listaLibros.mostrarPorISBN(isbn);
-        if (aux != null) {
-            System.out.println(aux.toString());
+        Libro libro = arbolLibros.mostrarPorISBN(isbn);
+        if (libro != null) {
+            System.out.println(libro.toString());
         } else {
             System.out.println("No se encontraron libros que cumplan con el criterio");
         }
@@ -146,7 +152,7 @@ public class Biblioteca {
      * @param autor - El autor que se busca.
      */
     public void mostrarPorAutor(String autor) {
-        Lista<Libro> listaAux = listaAutores.mostrarPorAutor(autor);
+        Lista<Libro> listaAux = arbolAutores.mostrarPorAutor(autor);
         if (listaAux != null) {
             listaAux.imprimirDatos();
             if (listaAux.esVacia()) {
@@ -161,7 +167,7 @@ public class Biblioteca {
      * @param tag - El tag que se busca.
      */
     public void mostrarPorTag(String tag) {
-        Lista<Libro> listaAux = listaTags.mostrarPorTag(tag);
+        Lista<Libro> listaAux = arbolTags.mostrarPorTag(tag);
         if (listaAux != null) {
             listaAux.imprimirDatos();
             if (listaAux.esVacia()) {
@@ -175,8 +181,8 @@ public class Biblioteca {
      * 
      * @param isbn - El ISBN13 del libro que se busca.
      */
-    public void mostrarDetalles(long isbn) {
-        listaLibros.mostrarDetalles(isbn);
+    public void mostrarDetalles(String titulo) {
+        arbolLibros.mostrarDetalles(titulo);
     }
     
     /**
@@ -186,27 +192,47 @@ public class Biblioteca {
      */
     public void eliminarAutor(String autor) {
         
-        Nodo<Autor> auxAutor = listaAutores.getPrimero();
-        while (auxAutor != null) {
-            if (auxAutor.getDato().getNombre().equals(autor)) {
-                break;
-            } else {
-                auxAutor = auxAutor.getSiguiente();
-            }
-        }
+        IElementoAB<Autor> auxAutor = arbolAutores.buscar(autor);
         
         if (auxAutor != null) {
-            Autor autorAEliminar = auxAutor.getDato();
+            Autor autorAEliminar = auxAutor.getDatos();
             Lista<Libro> librosAEliminar = autorAEliminar.getLibrosEscritos();
             Nodo<Libro> aux = librosAEliminar.getPrimero();
             while (aux != null) {
-                listaLibros.eliminar(aux.getEtiqueta());
+                arbolLibros.eliminar(aux.getEtiqueta());
                 aux = aux.getSiguiente();
             }
-            listaAutores.eliminar(autorAEliminar.getID());
+            arbolAutores.eliminar(autor);
             System.out.println("Eliminación realizada exitosamente.");
         } else {
             System.out.println("No se encontró el autor a eliminar.");
+        }
+    }
+    
+    public void eliminarTag(String tag) {
+        
+        IElementoAB<Tag> auxTag = arbolTags.buscar(tag);
+        
+        if (auxTag != null) {
+            Tag tagAEliminar = auxTag.getDatos();
+            Lista<Libro> librosAUntaggear = tagAEliminar.getLibrosTagged();
+            Nodo<Libro> aux = librosAUntaggear.getPrimero();
+            while (aux != null) {
+                IElementoAB<Libro> auxLibro = arbolLibros.buscar(aux.getEtiqueta());
+                if (auxLibro != null) {
+                    Libro libro = auxLibro.getDatos();
+                    Lista<Tag> tags = libro.getTags();
+                    tags.eliminar(tag);
+                    if (tags.esVacia()) {
+                        arbolLibrosUntagged.insertar(new TElementoAB<>(libro.getTitulo(), libro));
+                        arbolLibros.eliminar(libro.getTitulo());
+                    }
+                }
+            }
+            arbolTags.eliminar(tag);
+            System.out.println("Eliminacion realizada exitosamente.");
+        } else {
+            System.out.println("No se encontro el tag a eliminar.");
         }
     }
 }
