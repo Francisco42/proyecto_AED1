@@ -5,18 +5,16 @@
  */
 package proyecto_aed1;
 
+import java.util.LinkedList;
+
 /**
  * Extiende el TDALista, con el tipo Libro.
  * 
  * @author usuario
  */
-public class ListaLibros extends Lista<Libro> {
+public class ArbolLibros extends TArbolBB<Libro> {
 
-    public ListaLibros() {
-    }
-
-    public ListaLibros(Nodo<Libro> unNodo) {
-        super(unNodo);
+    public ArbolLibros() {
     }
     
     /**
@@ -25,34 +23,29 @@ public class ListaLibros extends Lista<Libro> {
      * @param año - El año de criterio.
      * @return La lista de libros que cumplen con el criterio.
      */
-    public ListaLibros mostrarUltimasEdiciones(int año) {
-        ListaLibros listaAux = new ListaLibros();
-        Nodo<Libro> aux = primero;
-        while (aux != null) {
-            if (aux.getDato().getAño() >= año) {
-                listaAux.insertar(aux.clonar());
+    public LinkedList<Libro> mostrarUltimasEdiciones(int año) {
+        LinkedList<Libro> listaAux = new LinkedList<>();
+        for (Libro aux : inordenDatos()) {
+            if (aux.getAño() >= año) {
+                listaAux.add(aux);
             }
-            aux = aux.getSiguiente();
         }
         return listaAux;
     }
     
     /**
-     * Busca todos los libros que tienen un titulo dado.
+     * Busca el libros que tiene un titulo dado.
      * 
      * @param titulo - El titulo que se busca.
-     * @return La lista de libros que cumplen con el criterio.
+     * @return El libro que cumplen con el criterio.
      */
-    public ListaLibros mostrarPorTitulo(String titulo) {
-        ListaLibros listaAux = new ListaLibros();
-        Nodo<Libro> aux = primero;
-        while (aux != null) {
-            if (aux.getDato().getTitulo().equals(titulo)) {
-                listaAux.insertar(aux.clonar());
-            }
-            aux = aux.getSiguiente();
+    public Libro mostrarPorTitulo(String titulo) {
+        IElementoAB<Libro> aux = buscar(titulo);
+        if (aux != null) {
+            return aux.getDatos();
+        } else {
+            return null;
         }
-        return listaAux;
     }
     
     /**
@@ -62,14 +55,12 @@ public class ListaLibros extends Lista<Libro> {
      * @param año - El año que se busca.
      * @return La lista de libros que cumplen con el criterio.
      */
-    public ListaLibros mostrarPorAño(int año) {
-        ListaLibros listaAux = new ListaLibros();
-        Nodo<Libro> aux = primero;
-        while (aux != null) {
-            if (aux.getDato().getAño() == año) {
-                listaAux.insertar(aux.clonar());
+    public LinkedList<Libro> mostrarPorAño(int año) {
+        LinkedList<Libro> listaAux = new LinkedList<>();
+        for (Libro aux : inordenDatos()) {
+            if (aux.getAño() == año) {
+                listaAux.add(aux);
             }
-            aux = aux.getSiguiente();
         }
         return listaAux;
     }
@@ -81,12 +72,10 @@ public class ListaLibros extends Lista<Libro> {
      * @return El libro que cumple con el criterio.
      */
     public Libro mostrarPorISBN(long isbn) {
-        Nodo<Libro> aux = primero;
-        while (aux != null) {
-            if (aux.getDato().getISBN() == isbn) {
-                return aux.getDato();
+        for (Libro aux : inordenDatos()) {
+            if (aux.getISBN() == isbn) {
+                return aux;
             }
-            aux = aux.getSiguiente();
         }
         return null;
     }
