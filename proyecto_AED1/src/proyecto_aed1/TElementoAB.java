@@ -9,6 +9,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
     private IElementoAB hijoIzq;
     private IElementoAB hijoDer;
     private T datos;
+    private int altura;
 
     /**
      * @param unaEtiqueta
@@ -18,6 +19,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
     public TElementoAB(Comparable unaEtiqueta, T unosDatos) {
         etiqueta = unaEtiqueta;
         datos = unosDatos;
+        altura = 0;
     }
 
     public IElementoAB getHijoIzq() {
@@ -26,6 +28,10 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     public IElementoAB getHijoDer() {
         return hijoDer;
+    }
+    
+    public int getAltura() {
+        return altura;
     }
 
     /**
@@ -36,16 +42,22 @@ public class TElementoAB<T> implements IElementoAB<T> {
     public boolean insertar(IElementoAB unElemento) {
         if (unElemento.getEtiqueta().compareTo(etiqueta) < 0) {
             if (hijoIzq != null) {
-                return getHijoIzq().insertar(unElemento);
+                boolean insertado = hijoIzq.insertar(unElemento);
+                actualizarAltura();
+                return insertado;
             } else {
                 hijoIzq = unElemento;
+                actualizarAltura();
                 return true;
             }
         } else if (unElemento.getEtiqueta().compareTo(etiqueta) > 0) {
             if (hijoDer != null) {
-                return getHijoDer().insertar(unElemento);
+                boolean insertado = hijoDer.insertar(unElemento);
+                actualizarAltura();
+                return insertado;
             } else {
                 hijoDer = unElemento;
+                actualizarAltura();
                 return true;
             }
         } else {
@@ -203,7 +215,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return quitaElNodo();
     }
 
-    public IElementoAB<T>quitaElNodo(){
+    public IElementoAB<T> quitaElNodo(){
         if(hijoIzq == null){
             return hijoDer;
         }
@@ -222,6 +234,62 @@ public class TElementoAB<T> implements IElementoAB<T> {
         }
         elHijo.setHijoDer(hijoDer);
         return elHijo;
+        
+    }
+    
+    @Override
+    public void actualizarAltura() {
+        altura = 1 + hijoIzq.getAltura() + hijoDer.getAltura();
+    }
+    
+    private IElementoAB<T> rotacionLL(IElementoAB k2) {
+        IElementoAB<T> k1 = k2.getHijoIzq();
+        k2.setHijoIzq(k1.getHijoDer());
+        k1.setHijoDer(k2);
+        k2.actualizarAltura();
+        k1.actualizarAltura();
+        return k1;
+    }
+    
+    private IElementoAB<T> rotacionRR(IElementoAB k1) {
+        IElementoAB<T> k2 = k1.getHijoDer();
+        k1.setHijoDer(k2.getHijoIzq());
+        k2.setHijoIzq(k1);
+        k1.actualizarAltura();
+        k2.actualizarAltura();
+        return k2;
+    }
+    
+    private IElementoAB<T> rotacionLR(IElementoAB k3) {
+        k3.setHijoIzq(rotacionRR(k3.getHijoIzq()));
+        return rotacionLL(k3);
+    }
+    
+    private IElementoAB<T> rotacionRL(IElementoAB k1) {
+        k1.setHijoDer(rotacionLL(k1.getHijoDer()));
+        return rotacionRR(k1);
+    }
+    
+//    @Override
+//    public int obtenerAltura() {
+//        int alturaIzq = 0;
+//        if (hijoIzq != null) {
+//            alturaIzq = hijoIzq.obtenerAltura();
+//        }
+//        int alturaDer = 0;
+//        if (hijoDer != null) {
+//            alturaDer = hijoDer.obtenerAltura();
+//        }
+//        return 1 + Math.max(alturaIzq, alturaDer);
+//    }
+//    
+    private boolean isBalanceado() {
+        int altHI = hijoIzq.getAltura();
+        int altHD = hijoDer.getAltura();
+        return Math.abs(altHD - altHI) <= 1;
+    }
+    
+    private void balancear() {
         
     }
 }

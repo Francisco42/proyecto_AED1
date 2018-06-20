@@ -122,7 +122,14 @@ public class TArbolBB<T> implements IArbolBB<T> {
         }
     }
 
-    
+//    @Override
+//    public int obtenerAltura() {
+//        if (raiz == null) {
+//            return 0;
+//        } else {
+//            return raiz.obtenerAltura();
+//        }
+//    }
 
    
 }

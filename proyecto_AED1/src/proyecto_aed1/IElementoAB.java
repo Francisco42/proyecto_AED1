@@ -104,4 +104,8 @@ public interface IElementoAB<T> {
     public String postOrden();
     
     public String imprimirDato();
+    
+    public int getAltura();
+    
+    public void actualizarAltura();
 }
