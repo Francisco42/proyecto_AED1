@@ -290,6 +290,20 @@ public class TElementoAB<T> implements IElementoAB<T> {
     }
     
     private void balancear() {
-        
+        if (!isBalanceado()) {
+            int altLL = hijoIzq.getHijoIzq().getAltura();
+            int altLR = hijoIzq.getHijoDer().getAltura();
+            int altRL = hijoDer.getHijoIzq().getAltura();
+            int altRR = hijoDer.getHijoDer().getAltura();
+            if ((altLL > altLR) && (altLL > altRL) && (altLL > altRR)) {
+                rotacionLL(this);
+            } else if ((altLR > altRL) && (altLR > altRR)) {
+                rotacionLR(this);
+            } else if (altRL > altRR) {
+                rotacionRL(this);
+            } else {
+                rotacionRR(this);
+            }
+        }
     }
 }
