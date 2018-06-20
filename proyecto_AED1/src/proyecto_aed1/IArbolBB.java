@@ -53,7 +53,5 @@ public interface IArbolBB<T> {
     public LinkedList<Comparable> inorden( );
 
     public LinkedList<T> inordenDatos();
-	
-    public int obtenerAltura();
 }
 

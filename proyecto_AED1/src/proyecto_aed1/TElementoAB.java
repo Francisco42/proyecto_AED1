@@ -22,14 +22,17 @@ public class TElementoAB<T> implements IElementoAB<T> {
         altura = 0;
     }
 
+    @Override
     public IElementoAB getHijoIzq() {
         return hijoIzq;
     }
 
+    @Override
     public IElementoAB getHijoDer() {
         return hijoDer;
     }
     
+    @Override
     public int getAltura() {
         return altura;
     }
@@ -39,25 +42,30 @@ public class TElementoAB<T> implements IElementoAB<T> {
      * @return
      */
     @SuppressWarnings("unchecked")
+    @Override
     public boolean insertar(IElementoAB unElemento) {
         if (unElemento.getEtiqueta().compareTo(etiqueta) < 0) {
             if (hijoIzq != null) {
                 boolean insertado = hijoIzq.insertar(unElemento);
                 actualizarAltura();
+                balancear();
                 return insertado;
             } else {
                 hijoIzq = unElemento;
                 actualizarAltura();
+                balancear();
                 return true;
             }
         } else if (unElemento.getEtiqueta().compareTo(etiqueta) > 0) {
             if (hijoDer != null) {
                 boolean insertado = hijoDer.insertar(unElemento);
                 actualizarAltura();
+                balancear();
                 return insertado;
             } else {
                 hijoDer = unElemento;
                 actualizarAltura();
+                balancear();
                 return true;
             }
         } else {
@@ -70,6 +78,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
      * @param unaEtiqueta
      * @return
      */
+    @Override
     public IElementoAB buscar(Comparable unaEtiqueta) {
 
         if (unaEtiqueta.equals(etiqueta)) {
@@ -203,16 +212,21 @@ public class TElementoAB<T> implements IElementoAB<T> {
         if (unaEtiqueta.compareTo(this.etiqueta) < 0){
             if(hijoIzq != null){
                 hijoIzq = hijoIzq.eliminar(unaEtiqueta);
+                actualizarAltura();
+                balancear();
             }
             return this;
         }
         if(unaEtiqueta.compareTo(etiqueta) > 0){
             if(hijoDer != null){
                 hijoDer = hijoDer.eliminar(unaEtiqueta);
+                actualizarAltura();
+                balancear();
             }
             return this;
         }
-        return quitaElNodo();
+        IElementoAB<T> nuevo = quitaElNodo();
+        return nuevo;
     }
 
     public IElementoAB<T> quitaElNodo(){
@@ -239,7 +253,15 @@ public class TElementoAB<T> implements IElementoAB<T> {
     
     @Override
     public void actualizarAltura() {
-        altura = 1 + hijoIzq.getAltura() + hijoDer.getAltura();
+        int altL = -1;
+        int altR = -1;
+        if (hijoIzq != null) {
+            altL = hijoIzq.getAltura();
+        }
+        if (hijoDer != null) {
+            altR = hijoDer.getAltura();
+        }
+        altura = 1 + Math.max(altL, altR);
     }
     
     private IElementoAB<T> rotacionLL(IElementoAB k2) {
@@ -284,17 +306,50 @@ public class TElementoAB<T> implements IElementoAB<T> {
 //    }
 //    
     private boolean isBalanceado() {
-        int altHI = hijoIzq.getAltura();
-        int altHD = hijoDer.getAltura();
+        int altHI = -1;
+        if (hijoIzq != null) {
+            altHI = hijoIzq.getAltura();
+        }
+        int altHD = -1;
+        if (hijoDer != null) {
+            altHD = hijoDer.getAltura();
+        }
         return Math.abs(altHD - altHI) <= 1;
     }
     
     private void balancear() {
         if (!isBalanceado()) {
-            int altLL = hijoIzq.getHijoIzq().getAltura();
-            int altLR = hijoIzq.getHijoDer().getAltura();
-            int altRL = hijoDer.getHijoIzq().getAltura();
-            int altRR = hijoDer.getHijoDer().getAltura();
+            int altLL = -2;
+            int altLR = -2;
+            int altRL = -2;
+            int altRR = -2;
+            
+            if (hijoIzq != null) {
+                if (hijoIzq.getHijoIzq() != null) {
+                    altLL = hijoIzq.getHijoIzq().getAltura();
+                } else {
+                    altLL = -1;
+                }
+                if (hijoIzq.getHijoDer() != null) {
+                    altLR = hijoIzq.getHijoDer().getAltura();
+                } else {
+                    altLR = -1;
+                }
+            }
+            
+            if (hijoDer != null) {
+                if (hijoDer.getHijoIzq() != null) {
+                    altRL = hijoDer.getHijoIzq().getAltura();
+                } else {
+                    altRL = -1;
+                }
+                if (hijoDer.getHijoDer() != null) {
+                    altRR = hijoDer.getHijoDer().getAltura();
+                } else {
+                    altRR = -1;
+                }
+            }
+            
             if ((altLL > altLR) && (altLL > altRL) && (altLL > altRR)) {
                 rotacionLL(this);
             } else if ((altLR > altRL) && (altLR > altRR)) {
