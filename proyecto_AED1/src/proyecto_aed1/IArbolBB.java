@@ -13,7 +13,7 @@ public interface IArbolBB<T> {
      * @return Exito de la operaci�n
      */
 
-    public boolean insertar(IElementoAB<T> unElemento);
+    public void insertar(IElementoAB<T> unElemento);
 
  
 

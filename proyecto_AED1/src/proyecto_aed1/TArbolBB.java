@@ -21,12 +21,11 @@ public class TArbolBB<T> implements IArbolBB<T> {
      * @return
      */
     @Override
-    public boolean insertar(IElementoAB<T> unElemento) {
+    public void insertar(IElementoAB<T> unElemento) {
         if (esVacio()) {
             raiz = unElemento;
-            return true;
         } else {
-            return raiz.insertar(unElemento);
+            raiz = raiz.insertar(unElemento);
         }
     }
 

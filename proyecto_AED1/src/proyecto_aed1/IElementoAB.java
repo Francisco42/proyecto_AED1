@@ -56,7 +56,7 @@ public interface IElementoAB<T> {
      * @param elemento Elemento a insertar.
      * @return Exito de la operaci�n.
      */
-    public boolean insertar(IElementoAB elemento);
+    public IElementoAB<T> insertar(IElementoAB elemento);
 
   
     /**

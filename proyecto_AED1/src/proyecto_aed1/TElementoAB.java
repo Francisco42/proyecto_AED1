@@ -43,34 +43,28 @@ public class TElementoAB<T> implements IElementoAB<T> {
      */
     @SuppressWarnings("unchecked")
     @Override
-    public boolean insertar(IElementoAB unElemento) {
+    public IElementoAB<T> insertar(IElementoAB unElemento) {
         if (unElemento.getEtiqueta().compareTo(etiqueta) < 0) {
             if (hijoIzq != null) {
-                boolean insertado = hijoIzq.insertar(unElemento);
+                hijoIzq = hijoIzq.insertar(unElemento);
                 actualizarAltura();
-                balancear();
-                return insertado;
+                return balancear();
             } else {
                 hijoIzq = unElemento;
-                actualizarAltura();
-                balancear();
-                return true;
+                return this;
             }
         } else if (unElemento.getEtiqueta().compareTo(etiqueta) > 0) {
             if (hijoDer != null) {
-                boolean insertado = hijoDer.insertar(unElemento);
+                hijoDer = hijoDer.insertar(unElemento);
                 actualizarAltura();
-                balancear();
-                return insertado;
+                return balancear();
             } else {
                 hijoDer = unElemento;
-                actualizarAltura();
-                balancear();
-                return true;
+                return this;
             }
         } else {
             // ya existe un elemento con la misma etiqueta.-
-            return false;
+            return this;
         }
     }
 
@@ -317,7 +311,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return Math.abs(altHD - altHI) <= 1;
     }
     
-    private void balancear() {
+    private IElementoAB<T> balancear() {
         if (!isBalanceado()) {
             int altLL = -2;
             int altLR = -2;
@@ -351,14 +345,15 @@ public class TElementoAB<T> implements IElementoAB<T> {
             }
             
             if ((altLL > altLR) && (altLL > altRL) && (altLL > altRR)) {
-                rotacionLL(this);
+                return rotacionLL(this);
             } else if ((altLR > altRL) && (altLR > altRR)) {
-                rotacionLR(this);
+                return rotacionLR(this);
             } else if (altRL > altRR) {
-                rotacionRL(this);
+                return rotacionRL(this);
             } else {
-                rotacionRR(this);
+                return rotacionRR(this);
             }
         }
+        return this;
     }
 }
