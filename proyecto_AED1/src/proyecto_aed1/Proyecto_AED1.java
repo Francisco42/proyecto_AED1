@@ -59,7 +59,7 @@ public class Proyecto_AED1 {
                 + "4 - Buscar libros por autor\n"
                 + "5 - Buscar libros por tag\n"
                 + "6 - Buscar las ultimas ediciones a partir de una año\n"
-                + "7 - Mostrar los detalles de un libro en particular (a partir de su ISBN13)\n"
+                + "7 - Mostrar los detalles de un libro en particular (a partir de su titulo)\n"
                 + "8 - Eliminar un autor de la biblioteca y todos sus libros asociados\n"
                 + "9 - Eliminar un tag de la biblioteca y removerlo de todos sus libros asociados\n"
                 + "10 - Salir del programa\n";
@@ -117,7 +117,7 @@ public class Proyecto_AED1 {
                         break;
 
                     case "7":
-                        System.out.println("Ingrese el ISBN13 del libro a buscar");
+                        System.out.println("Ingrese el titulo del libro a buscar");
                         linea2 = buffer.readLine();
                         System.out.println("");
                         biblioteca.mostrarDetalles(linea2);

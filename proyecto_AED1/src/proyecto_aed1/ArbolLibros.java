@@ -8,7 +8,7 @@ package proyecto_aed1;
 import java.util.LinkedList;
 
 /**
- * Extiende el TDALista, con el tipo Libro.
+ * Extiende el TArbolBB, con el tipo Libro.
  * 
  * @author usuario
  */
@@ -20,7 +20,7 @@ public class ArbolLibros extends TArbolBB<Libro> {
     /**
      * Busca todos los libros publicados a partir de cierto año.
      * 
-     * @param año - El año de criterio.
+     * @param año El año de criterio.
      * @return La lista de libros que cumplen con el criterio.
      */
     public LinkedList<Libro> mostrarUltimasEdiciones(int año) {
@@ -34,10 +34,10 @@ public class ArbolLibros extends TArbolBB<Libro> {
     }
     
     /**
-     * Busca el libros que tiene un titulo dado.
+     * Busca el libro que tiene un titulo dado.
      * 
-     * @param titulo - El titulo que se busca.
-     * @return El libro que cumplen con el criterio.
+     * @param titulo El titulo que se busca.
+     * @return El libro que cumple con el criterio.
      */
     public Libro mostrarPorTitulo(String titulo) {
         IElementoAB<Libro> aux = buscar(titulo);
@@ -52,7 +52,7 @@ public class ArbolLibros extends TArbolBB<Libro> {
      * Busca todos los libros que fueron publicados en un 
      * cierto año.
      * 
-     * @param año - El año que se busca.
+     * @param año El año que se busca.
      * @return La lista de libros que cumplen con el criterio.
      */
     public LinkedList<Libro> mostrarPorAño(int año) {
@@ -68,7 +68,7 @@ public class ArbolLibros extends TArbolBB<Libro> {
     /**
      * Busca el libro que tiene el ISBN13 dado.
      * 
-     * @param isbn - El ISBN13 que se busca.
+     * @param isbn El ISBN13 que se busca.
      * @return El libro que cumple con el criterio.
      */
     public Libro mostrarPorISBN(long isbn) {
@@ -83,7 +83,7 @@ public class ArbolLibros extends TArbolBB<Libro> {
     /**
      * Busca toda la informacion de un libro, incluyendo sus autores y tags.
      * 
-     * @param titulo - El titulo del libro que se busca.
+     * @param titulo El titulo del libro que se busca.
      */
     public void mostrarDetalles(String titulo) {
         IElementoAB<Libro> aux = buscar(titulo);

@@ -26,32 +26,37 @@ public class Biblioteca {
     }
 
     /**
-     * Retorna la lista de libros de la biblioteca.
+     * Retorna la coleccion de libros de la biblioteca.
      * 
-     * @return - La lista de libros.
+     * @return La coleccion de libros.
      */
     public ArbolLibros getArbolLibros() {
         return arbolLibros;
     }
 
     /**
-     * Retorna la lista de tags de la biblioteca.
+     * Retorna la coleccion de tags de la biblioteca.
      * 
-     * @return - La lista de tags.
+     * @return La coleccion de tags.
      */
     public ArbolTags getArbolTags() {
         return arbolTags;
     }
 
     /**
-     * Retorna la lista de autores de la biblioteca.
+     * Retorna la coleccion de autores de la biblioteca.
      * 
-     * @return - La lista de autores.
+     * @return La coleccion de autores.
      */
     public ArbolAutores getArbolAutores() {
         return arbolAutores;
     }
     
+    /**
+     * Retorna la coleccion de libros sin tags de la biblioteca.
+     * 
+     * @return La coleccion de libros.
+     */
     public ArbolLibros getArbolLibrosUntagged() {
         return arbolLibrosUntagged;
     }
@@ -59,8 +64,7 @@ public class Biblioteca {
     /**
      * Inserta un nuevo libro en la biblioteca.
      * 
-     * @param id - El id del libro a insertar.
-     * @param libro - El libro a insertar.
+     * @param libro El libro a insertar.
      */
     public void insertarLibro(Libro libro) {
         arbolLibros.insertar(new TElementoAB<>(libro.getTitulo(), libro));
@@ -69,8 +73,7 @@ public class Biblioteca {
     /**
      * Inserta un nuevo autor en la biblioteca.
      * 
-     * @param id - El id del autor a insertar.
-     * @param autor - El autor a insertar.
+     * @param autor El autor a insertar.
      */
     public void insertarAutor(Autor autor) {
         arbolAutores.insertar(new TElementoAB<>(autor.getNombre(), autor));
@@ -79,8 +82,7 @@ public class Biblioteca {
     /**
      * Inserta un nuevo tag en la biblioteca.
      * 
-     * @param id - El id del tag a insertar.
-     * @param tag - El tag a insertar.
+     * @param tag El tag a insertar.
      */
     public void insertarTag(Tag tag) {
         arbolTags.insertar(new TElementoAB<>(tag.getTag(), tag));
@@ -89,7 +91,7 @@ public class Biblioteca {
     /**
      * Muestra en pantalla todos los libros publicados a partir de cierto año.
      * 
-     * @param año - El año de criterio.
+     * @param año El año de criterio.
      */
     public void mostrarUltimasEdiciones(int año) {
         LinkedList<Libro> listaAux = arbolLibros.mostrarUltimasEdiciones(año);
@@ -104,7 +106,7 @@ public class Biblioteca {
     /**
      * Muestra en pantalla todos los libros que tienen un titulo dado.
      * 
-     * @param titulo - El titulo que se busca.
+     * @param titulo El titulo que se busca.
      */
     public void mostrarPorTitulo(String titulo) {
         Libro libro = arbolLibros.mostrarPorTitulo(titulo);
@@ -119,7 +121,7 @@ public class Biblioteca {
      * Muestra en pantalla todos los libros que fueron publicados en un 
      * cierto año.
      * 
-     * @param año - El año que se busca.
+     * @param año El año que se busca.
      */
     public void mostrarPorAño(int año) {
         LinkedList<Libro> listaAux = arbolLibros.mostrarPorAño(año);
@@ -134,7 +136,7 @@ public class Biblioteca {
     /**
      * Muestra en pantalla el libro que tiene el ISBN13 dado.
      * 
-     * @param isbn - El ISBN13 que se busca.
+     * @param isbn El ISBN13 que se busca.
      */
     public void mostrarPorISBN(long isbn) {
         Libro libro = arbolLibros.mostrarPorISBN(isbn);
@@ -149,7 +151,7 @@ public class Biblioteca {
      * Muestra en pantalla todos los libros que fueron escritos por un 
      * cierto autor
      * 
-     * @param autor - El autor que se busca.
+     * @param autor El autor que se busca.
      */
     public void mostrarPorAutor(String autor) {
         Lista<Libro> listaAux = arbolAutores.mostrarPorAutor(autor);
@@ -164,7 +166,7 @@ public class Biblioteca {
     /**
      * Muestra en pantalla todos los libros que llevan un cierto tag.
      * 
-     * @param tag - El tag que se busca.
+     * @param tag El tag que se busca.
      */
     public void mostrarPorTag(String tag) {
         Lista<Libro> listaAux = arbolTags.mostrarPorTag(tag);
@@ -179,7 +181,7 @@ public class Biblioteca {
     /**
      * Muestra toda la informacion de un libro, incluyendo sus autores y tags.
      * 
-     * @param isbn - El ISBN13 del libro que se busca.
+     * @param titulo El titulo del libro que se busca.
      */
     public void mostrarDetalles(String titulo) {
         arbolLibros.mostrarDetalles(titulo);
@@ -188,7 +190,7 @@ public class Biblioteca {
     /**
      * Elimina un autor de la biblioteca y todos los libros escritos por el.
      * 
-     * @param autor - El autor a eliminar.
+     * @param autor El autor a eliminar.
      */
     public void eliminarAutor(String autor) {
         
@@ -209,6 +211,12 @@ public class Biblioteca {
         }
     }
     
+    /**
+     * Elimina un tag de la biblioteca y lo remueve de todos sus libros 
+     * asociados.
+     * 
+     * @param tag El tag a eliminar.
+     */
     public void eliminarTag(String tag) {
         
         IElementoAB<Tag> auxTag = arbolTags.buscar(tag);
@@ -228,6 +236,7 @@ public class Biblioteca {
                         arbolLibros.eliminar(libro.getTitulo());
                     }
                 }
+                aux = aux.getSiguiente();
             }
             arbolTags.eliminar(tag);
             System.out.println("Eliminacion realizada exitosamente.");

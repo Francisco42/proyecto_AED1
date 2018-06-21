@@ -1,8 +1,13 @@
 package proyecto_aed1;
 
-
 import java.util.LinkedList;
 
+/**
+ * Representa al TDA Elemento de Arbol Binario
+ * 
+ * @author Francisco
+ * @param <T> El tipo del dato en el elemento.
+ */
 public class TElementoAB<T> implements IElementoAB<T> {
 
     private Comparable etiqueta;
@@ -11,11 +16,6 @@ public class TElementoAB<T> implements IElementoAB<T> {
     private T datos;
     private int altura;
 
-    /**
-     * @param unaEtiqueta
-     * @param unosDatos
-     */
-    @SuppressWarnings("unchecked")
     public TElementoAB(Comparable unaEtiqueta, T unosDatos) {
         etiqueta = unaEtiqueta;
         datos = unosDatos;
@@ -37,11 +37,6 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return altura;
     }
 
-    /**
-     * @param unElemento
-     * @return
-     */
-    @SuppressWarnings("unchecked")
     @Override
     public IElementoAB<T> insertar(IElementoAB unElemento) {
         if (unElemento.getEtiqueta().compareTo(etiqueta) < 0) {
@@ -67,14 +62,9 @@ public class TElementoAB<T> implements IElementoAB<T> {
             return this;
         }
     }
-
-    /**
-     * @param unaEtiqueta
-     * @return
-     */
+    
     @Override
     public IElementoAB buscar(Comparable unaEtiqueta) {
-
         if (unaEtiqueta.equals(etiqueta)) {
             return this;
         } else if (unaEtiqueta.compareTo(etiqueta) < 0) {
@@ -90,9 +80,6 @@ public class TElementoAB<T> implements IElementoAB<T> {
         }
     }
 
-    /**
-     * @return recorrida en inorden del subArbol que cuelga del elemento actual
-     */
     @Override
     public String inOrden() {
         StringBuilder tempStr = new StringBuilder();
@@ -105,7 +92,6 @@ public class TElementoAB<T> implements IElementoAB<T> {
             tempStr.append(TArbolBB.SEPARADOR_ELEMENTOS_IMPRESOS);
             tempStr.append(getHijoDer().inOrden());
         }
-
         return tempStr.toString();
     }
 
@@ -113,26 +99,22 @@ public class TElementoAB<T> implements IElementoAB<T> {
     public void inOrden(LinkedList<Comparable> unaLista) {
         if (hijoIzq != null) {
             hijoIzq.inOrden(unaLista);
-
         }
         unaLista.add(this.getEtiqueta());
         if (hijoDer != null) {
             hijoDer.inOrden(unaLista);
         }
-
     }
     
     @Override
     public void inOrdenDatos(LinkedList<T> unaLista) {
         if (hijoIzq != null) {
             hijoIzq.inOrdenDatos(unaLista);
-
         }
         unaLista.add(datos);
         if (hijoDer != null) {
             hijoDer.inOrdenDatos(unaLista);
         }
-
     }
     
     @Override
@@ -147,7 +129,6 @@ public class TElementoAB<T> implements IElementoAB<T> {
             tempStr.append(TArbolBB.SEPARADOR_ELEMENTOS_IMPRESOS);
             tempStr.append(getHijoDer().preOrden());
         }
-
         return tempStr.toString();
     }
     
@@ -171,9 +152,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return etiqueta;
     }
 
-    /**
-     * @return
-     */
+    @Override
     public String imprimir() {
         return (etiqueta.toString());
     }
@@ -191,16 +170,13 @@ public class TElementoAB<T> implements IElementoAB<T> {
     @Override
     public void setHijoIzq(IElementoAB elemento) {
         this.hijoIzq = elemento;
-
     }
 
     @Override
     public void setHijoDer(IElementoAB elemento) {
         this.hijoDer = elemento;
     }
-
   
-
     @Override
     public IElementoAB<T> eliminar(Comparable unaEtiqueta) {
         if (unaEtiqueta.compareTo(this.etiqueta) < 0){
@@ -223,26 +199,30 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return nuevo;
     }
 
-    public IElementoAB<T> quitaElNodo(){
-        if(hijoIzq == null){
+    /**
+     * Reemplaza al nodo con el que tiene la clave lexicograficamente anterior.
+     * 
+     * @return El nodo que va a tomar el lugar del eliminado.
+     */
+    public IElementoAB<T> quitaElNodo() {
+        if (hijoIzq == null) {
             return hijoDer;
         }
-        if(hijoDer == null){
+        if (hijoDer == null) {
             return hijoIzq;
         }
         IElementoAB elHijo = hijoIzq;
         IElementoAB elPadre = this;
-        while (elHijo.getHijoDer() != null){
+        while (elHijo.getHijoDer() != null) {
             elPadre = elHijo;
             elHijo = elHijo.getHijoDer();
         }
-        if(elPadre != this){
+        if (elPadre != this) {
             elPadre.setHijoDer(elHijo.getHijoIzq());
             elHijo.setHijoIzq(hijoIzq);
         }
         elHijo.setHijoDer(hijoDer);
-        return elHijo;
-        
+        return elHijo;   
     }
     
     @Override
@@ -285,20 +265,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
         k1.setHijoDer(rotacionLL(k1.getHijoDer()));
         return rotacionRR(k1);
     }
-    
-//    @Override
-//    public int obtenerAltura() {
-//        int alturaIzq = 0;
-//        if (hijoIzq != null) {
-//            alturaIzq = hijoIzq.obtenerAltura();
-//        }
-//        int alturaDer = 0;
-//        if (hijoDer != null) {
-//            alturaDer = hijoDer.obtenerAltura();
-//        }
-//        return 1 + Math.max(alturaIzq, alturaDer);
-//    }
-//    
+      
     private boolean isBalanceado() {
         int altHI = -1;
         if (hijoIzq != null) {

@@ -5,10 +5,8 @@
  */
 package proyecto_aed1;
 
-import java.util.LinkedList;
-
 /**
- * Extiende el TDALista, con el tipo Autor.
+ * Extiende el TArbolBB, con el tipo Autor.
  * 
  * @author Francisco
  */
@@ -21,8 +19,8 @@ public class ArbolAutores extends TArbolBB<Autor> {
      * Busca todos los libros que fueron escritos por un 
      * cierto autor
      * 
-     * @param autor - El autor que se busca.
-     * @return - Los libros escritos por ese autor.
+     * @param autor El autor que se busca.
+     * @return Los libros escritos por ese autor.
      */
     public Lista<Libro> mostrarPorAutor(String autor) {
         IElementoAB<Autor> aux = buscar(autor);

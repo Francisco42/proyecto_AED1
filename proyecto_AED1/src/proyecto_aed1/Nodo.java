@@ -4,7 +4,7 @@ package proyecto_aed1;
  * Representa la entidad Nodo.
  * 
  * @author ernesto
- * @param <T> - El tipo del dato que lleva el nodo.
+ * @param <T> El tipo del dato que lleva el nodo.
  */
 public class Nodo<T> implements INodo<T> {
 
@@ -20,7 +20,7 @@ public class Nodo<T> implements INodo<T> {
     /**
      * Retorna el dato del nodo.
      * 
-     * @return - El dato del nodo. 
+     * @return El dato del nodo. 
      */
     public T getDato() {
         return this.dato;
@@ -29,7 +29,7 @@ public class Nodo<T> implements INodo<T> {
     /**
      * Retorna la etiqueta del nodo.
      * 
-     * @return - La etiqueta.
+     * @return La etiqueta.
      */
     public Comparable getEtiqueta() {
         return this.etiqueta;
@@ -48,7 +48,7 @@ public class Nodo<T> implements INodo<T> {
     /**
      * Crea un nuevo nodo con el mismo dato y etiqueta.
      * 
-     * @return - El nuevo nodo.
+     * @return El nuevo nodo.
      */
     public Nodo<T> clonar() {
         return new Nodo<>(this.etiqueta, this.dato);
@@ -67,7 +67,7 @@ public class Nodo<T> implements INodo<T> {
     /**
      * Retorna el siguiente nodo en la lista.
      * 
-     * @return - El siguiente nodo.
+     * @return El siguiente nodo.
      */
     public Nodo<T> getSiguiente() {
         return this.siguiente;
@@ -76,7 +76,7 @@ public class Nodo<T> implements INodo<T> {
     /**
      * Le asigna a este nodo un siguiente nuevo.
      * 
-     * @param nodo - El nuevo siguiente.
+     * @param nodo El nuevo siguiente.
      */
     public void setSiguiente(Nodo<T> nodo) {
         this.siguiente = nodo;

@@ -101,7 +101,6 @@ public class Libro {
     /**
      * Inserta un autor en la lista de autores del libro.
      * 
-     * @param id - El id del autor a insertar.
      * @param autor - El autor a insertar.
      */
     public void insertarAutor(Autor autor) {
@@ -112,7 +111,6 @@ public class Libro {
     /**
      * Inserta un tag en la lista de tags del libro.
      * 
-     * @param id - El id del tag a insertar.
      * @param tag - El tag a insertar.
      */
     public void insertarTag(Tag tag) {

@@ -19,8 +19,8 @@ public class ManejadorArchivosGenerico {
     /**
      * Escribe lineas de texto en un archivo.
      * 
-     * @param nombreCompletoArchivo - La ruta y nombre del archivo.
-     * @param listaLineasArchivo - lista con las lineas del archivo
+     * @param nombreCompletoArchivo La ruta y nombre del archivo.
+     * @param listaLineasArchivo Lista con las lineas del archivo
      */
     public static void escribirArchivo(String nombreCompletoArchivo,
         String[] listaLineasArchivo) {
@@ -44,7 +44,7 @@ public class ManejadorArchivosGenerico {
     /**
      * Lee las lineas de texto de un archivo.
      * 
-     * @param nombreCompletoArchivo - La ruta y nombre del archivo.
+     * @param nombreCompletoArchivo La ruta y nombre del archivo.
      * @return Lista con las lineas de texto del archivo.
      */
     public static String[] leerArchivo(String nombreCompletoArchivo) {

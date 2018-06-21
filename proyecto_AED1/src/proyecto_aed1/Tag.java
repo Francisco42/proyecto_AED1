@@ -28,7 +28,7 @@ public class Tag {
     /**
      * Retorna el tag.
      * 
-     * @return - Tag
+     * @return Tag
      */
     public String getTag() {
         return tag;
@@ -37,7 +37,7 @@ public class Tag {
     /**
      * Retorna la lista de libros que llevan este tag.
      * 
-     * @return - La lista de libros.
+     * @return La lista de libros.
      */
     public Lista<Libro> getLibrosTagged() {
         return librosTagged;
@@ -46,7 +46,6 @@ public class Tag {
     /**
      * Inserta un libro en la lista de libros que llevan este tag.
      * 
-     * @param id - El id del libro a insertar.
      * @param libro - El libro a insertar.
      */
     public void insertarLibro(Libro libro) {

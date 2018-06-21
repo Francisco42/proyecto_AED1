@@ -18,10 +18,11 @@ public class CargadorArchivosBiblioteca {
      * Metodo encargado de transferir la informacion de los libros a la lista
      * de libros de la biblioteca.
      * 
-     * @param biblioteca - La biblioteca a la cual se van a agregar libros.
+     * @param biblioteca La biblioteca a la cual se van a agregar libros.
      */
     public void cargarLibros(Biblioteca biblioteca) {
         String[] libros = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/books.csv");
+        //String[] libros = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/booksTest.txt");
         for (String libro : libros) {
             String[] partesLibro = libro.split("\\|");
             
@@ -45,10 +46,11 @@ public class CargadorArchivosBiblioteca {
      * Metodo encargado de transferir la informacion del archivo de autores
      * a la lista de autores de la biblioteca.
      * 
-     * @param biblioteca - La biblioteca a la cual se van a agregar autores.
+     * @param biblioteca La biblioteca a la cual se van a agregar autores.
      */
     public void cargarAutores(Biblioteca biblioteca) {
         String[] autores = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/authors.csv");
+        //String[] autores = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/authorsTest.txt");
         for (String autor : autores) {
             String[] partesAutor = autor.split("\\|");
             
@@ -68,10 +70,11 @@ public class CargadorArchivosBiblioteca {
      * Metodo encargado de transeferir la informacion del archivo de tags 
      * a la lista de tags de la biblioteca.
      * 
-     * @param biblioteca - La biblioteca a la cual se van a agregar tags.
+     * @param biblioteca La biblioteca a la cual se van a agregar tags.
      */
     public void cargarTags(Biblioteca biblioteca) {
         String[] tags = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/tags.csv");
+        //String[] tags = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/tagsTest.txt");
         for (String tag : tags) {
             String[] partesTag = tag.split("\\|");
             
@@ -91,7 +94,7 @@ public class CargadorArchivosBiblioteca {
      * Metodo encargado de agregar las referencias a autores en sus 
      * respectivos libros y vice versa.
      * 
-     * @param biblioteca - La biblioteca en la cual se van a realizar las 
+     * @param biblioteca La biblioteca en la cual se van a realizar las 
      * asociaciones.
      */
     public void asociarLibrosAutores(Biblioteca biblioteca) {
@@ -99,6 +102,7 @@ public class CargadorArchivosBiblioteca {
         ArbolLibros arbolLibros = biblioteca.getArbolLibros();
         ArbolAutores arbolAutores = biblioteca.getArbolAutores();
         String[] librosAutores = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/bookauthors.csv");
+        //String[] librosAutores = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/bookauthorsTest.txt");
         for (String libroAutor : librosAutores) {
             String[] partes = libroAutor.split("\\|");
             
@@ -135,7 +139,7 @@ public class CargadorArchivosBiblioteca {
      * Metdod encargado de agregar las referencias a tags en sus 
      * respectivos libros y vice versa.
      * 
-     * @param biblioteca - La biblioteca en la cual se van a realizar las 
+     * @param biblioteca La biblioteca en la cual se van a realizar las 
      * asociaciones.
      */
     public void asociarLibrosTags(Biblioteca biblioteca) {
@@ -143,6 +147,7 @@ public class CargadorArchivosBiblioteca {
         ArbolLibros arbolLibros = biblioteca.getArbolLibros();
         ArbolTags arbolTags = biblioteca.getArbolTags();
         String[] librosTags = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/booktags.csv");
+        //String[] librosTags = ManejadorArchivosGenerico.leerArchivo("src/proyecto_aed1/booktagsTest.txt");
         for (String libroTag : librosTags) {
             String[] partes = libroTag.split("\\|");
             
@@ -177,7 +182,7 @@ public class CargadorArchivosBiblioteca {
     /**
      * Checkea si una arreglo de strings tiene algun string vacio.
      * 
-     * @param lista - La lista a checkear.
+     * @param lista La lista a checkear.
      * @return true si la lista no tiene ningun string vacio, false en caso
      * contrario.
      */

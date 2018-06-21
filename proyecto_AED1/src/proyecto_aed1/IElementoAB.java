@@ -1,8 +1,13 @@
 package proyecto_aed1;
 
-
 import java.util.LinkedList;
 
+/**
+ * Interfaz a ser implementada por la entidad TElementoAB
+ * 
+ * @author Francisco
+ * @param <T> El tipo del dato que almacena el elemento
+ */
 public interface IElementoAB<T> {
 
     /**
@@ -29,14 +34,14 @@ public interface IElementoAB<T> {
     /**
      * Asigna el hijo izquierdo del nodo.
      *
-     * @return Elemento a ser asignado como hijo izquierdo.
+     * @param elemento El nuevo hijo izquierdo.
      */
     public void setHijoIzq(IElementoAB elemento);
 
     /**
      * Asigna el hijo derecho del nodo.
      *
-     * @return Elemento a ser asignado como hijo derecho.
+     * @param elemento El nuevo hijo derecho.
      */
     public void setHijoDer(IElementoAB elemento);
 
@@ -49,12 +54,11 @@ public interface IElementoAB<T> {
     public IElementoAB buscar(Comparable unaEtiqueta);
 
  
-
     /**
      * Inserta un elemento dentro del arbol.
      *
      * @param elemento Elemento a insertar.
-     * @return Exito de la operaci�n.
+     * @return El nuevo arbol con el elmento insertado.
      */
     public IElementoAB<T> insertar(IElementoAB elemento);
 
@@ -66,28 +70,41 @@ public interface IElementoAB<T> {
      */
     public String inOrden();
 
-     /**
-     * pone las etiquetas del recorrido en inorden en una linkedlist.
+    /**
+     * Pone las etiquetas del recorrido en inorden en una LinkedList.
      *
-     * @param unaLista
+     * @param unaLista La lista a la que se agregan las claves.
      */
     public void inOrden(LinkedList<Comparable> unaLista);
     
+    /**
+     * Pone los datos del recorrido en inorden en una LinkedList.
+     * 
+     * @param unaLista La lista a la que se agregan los datos.
+     */
     public void inOrdenDatos(LinkedList<T> unaLista);
 
     /**
      * Retorna los datos contenidos en el elemento.
      *
-     * @return
+     * @return El dato.
      */
     public T getDatos();
    
     /**
      * Elimina un elemento dada una etiqueta.
-     * @param unaEtiqueta
-     * @return 
+     * 
+     * @param unaEtiqueta La clave del nodo a eliminar.
+     * @return El nuevo arbol con el elemento eliminado.
      */
     public IElementoAB<T> eliminar(Comparable unaEtiqueta);
+    
+    /**
+     * Imprime los datos del nodo
+     * 
+     * @return String con la etiqueta del nodo.
+     */
+    public String imprimir();
 	
     /**
      * Imprime en preorden el arbol separado por guiones.
@@ -103,9 +120,22 @@ public interface IElementoAB<T> {
      */
     public String postOrden();
     
+    /**
+     * Imprime la informacion del dato en el elemento.
+     * 
+     * @return String con la informacion.
+     */
     public String imprimirDato();
     
+    /**
+     * Retorna la altura del nodo.
+     * 
+     * @return La altura del nodo.
+     */
     public int getAltura();
     
+    /**
+     * Actualiza la laltura del nodo.
+     */
     public void actualizarAltura();
 }

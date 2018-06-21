@@ -4,21 +4,21 @@ package proyecto_aed1;
  * Interfaz a ser implentada por el TDALista.
  * 
  * @author Francisco
- * @param <T> - El tipo de los datos de los nodos de la lista.
+ * @param <T> El tipo de los datos de los nodos de la lista.
  */
 public interface ILista<T> {
 
     /**
      * Metodo encargado de agregar un nodo al final de la lista.
      *
-     * @param nodo - Nodo a agregar
+     * @param nodo Nodo a agregar
      */
     public void insertar(Nodo<T> nodo);
 
     /**
      * Metodo encargado de buscar un nodo cuya clave es la indicada.
      *
-     * @param clave - Clave del nodo a buscar.
+     * @param clave Clave del nodo a buscar.
      * @return El nodo encontrado. En caso de no encontrarlo, retornar null.
      */
     public INodo buscar(Comparable clave);
@@ -27,7 +27,7 @@ public interface ILista<T> {
      * Metodo encargado de eliminar un nodo cuya clave es la indicada.
      *
      * @param clave Clave del nodo a eliminar.
-     * @return True en caso de que la eliminaci�n haya sido efectuada con �xito.
+     * @return True en caso de que la eliminacion haya sido efectuada con �xito.
      */
     public boolean eliminar(Comparable clave);
 
@@ -40,7 +40,7 @@ public interface ILista<T> {
 
     /**
      * Retorna un String con las claves separadas por el separador pasado por
-     * par�metro.
+     * parametro.
      *
      * @param separador Separa las claves
      * @return
@@ -49,7 +49,7 @@ public interface ILista<T> {
 
     /**
      * Retorna la cantidad de elementos de la lista. En caso de que la lista
-     * este vac�a, retornar 0.
+     * este vacia, retornar 0.
      *
      * @return Cantidad de elementos de la lista.
      */

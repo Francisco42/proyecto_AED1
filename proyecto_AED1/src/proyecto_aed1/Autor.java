@@ -24,7 +24,7 @@ public class Autor {
     /**
      * Retorna el ID del autor.
      * 
-     * @return - El ID del autor.
+     * @return El ID del autor.
      */
     public int getID() {
         return id;
@@ -33,7 +33,7 @@ public class Autor {
     /**
      * Retorna el nombre completo del autor.
      * 
-     * @return - El nombre del autor.
+     * @return El nombre del autor.
      */
     public String getNombre() {
         return nombre;
@@ -42,7 +42,7 @@ public class Autor {
     /**
      * Retorna la lista de libros escritos por este autor.
      * 
-     * @return - La lista de libros.
+     * @return La lista de libros.
      */
     public Lista<Libro> getLibrosEscritos() {
         return librosEscritos;
@@ -51,8 +51,7 @@ public class Autor {
     /**
      * Inserta un libro en la lista de libros escritos por este autor.
      * 
-     * @param id - El id del libro a insertar.
-     * @param libro - El libro insertar.
+     * @param libro El libro insertar.
      */
     public void insertarLibro(Libro libro) {
         librosEscritos.insertar(new Nodo<>(libro.getTitulo(), libro));

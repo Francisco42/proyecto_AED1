@@ -4,7 +4,7 @@ package proyecto_aed1;
  * Representa al TDALista.
  * 
  * @author Francisco
- * @param <T> - El tipo de los datos que llevan los nodos de la lista.
+ * @param <T> El tipo de los datos que llevan los nodos de la lista.
  */
 public class Lista<T> implements ILista<T> {
 
@@ -171,8 +171,8 @@ public class Lista<T> implements ILista<T> {
     /**
      * Compara la lista con otra pasada por parametro.
      * 
-     * @param otraLista - La lista con la cual se va a comparar.
-     * @return - true si las listas contienen los mismos datos 
+     * @param otraLista La lista con la cual se va a comparar.
+     * @return true si las listas contienen los mismos datos 
      * en el mismo orden, false en caso contrario.
      */
     public boolean equals(Lista<T> otraLista) {

@@ -3,6 +3,12 @@ package proyecto_aed1;
 
 import java.util.LinkedList;
 
+/**
+ * Representa al TDA Arbol Binario.
+ * 
+ * @author Francisco
+ * @param <T> El tipo de los datos en los nodos del arbol.
+ */
 public class TArbolBB<T> implements IArbolBB<T> {
 
     protected IElementoAB<T> raiz;
@@ -16,10 +22,6 @@ public class TArbolBB<T> implements IArbolBB<T> {
         raiz = null;
     }
 
-    /**
-     * @param unElemento
-     * @return
-     */
     @Override
     public void insertar(IElementoAB<T> unElemento) {
         if (esVacio()) {
@@ -29,11 +31,6 @@ public class TArbolBB<T> implements IArbolBB<T> {
         }
     }
 
-    /**
-     * @param unaEtiqueta
-     * @return
-     */
-    @SuppressWarnings("unchecked")
     @Override
     public IElementoAB<T> buscar(Comparable unaEtiqueta) {
         if (esVacio()) {
@@ -43,9 +40,6 @@ public class TArbolBB<T> implements IArbolBB<T> {
         }
     }
 
-    /**
-     * @return recorrida en inorden del arbol, null en caso de ser vacío
-     */
     @Override
     public String inOrden() {
         if (esVacio()) {
@@ -55,6 +49,7 @@ public class TArbolBB<T> implements IArbolBB<T> {
         }
     }
     
+    @Override
     public String preOrden() {
         if (raiz == null ) {
             return "Arbol vacio.";
@@ -63,6 +58,7 @@ public class TArbolBB<T> implements IArbolBB<T> {
         }
     }
     
+    @Override
     public String postOrden() {
         if (raiz == null ) {
             return "Arbol vacio.";
@@ -72,10 +68,7 @@ public class TArbolBB<T> implements IArbolBB<T> {
     }
 
     /**
-     * @return recorrida en preOrden del arbol, null en caso de ser vacío
-     */
-    /**
-     * @return
+     * @return true si el arbol esta vacio, false en caso contrario.
      */
     public boolean esVacio() {
         return (raiz == null);
@@ -120,15 +113,4 @@ public class TArbolBB<T> implements IArbolBB<T> {
             raiz = raiz.eliminar(unaEtiqueta);
         }
     }
-
-//    @Override
-//    public int obtenerAltura() {
-//        if (raiz == null) {
-//            return 0;
-//        } else {
-//            return raiz.obtenerAltura();
-//        }
-//    }
-
-   
 }
