@@ -46,7 +46,7 @@ public class Tag {
     /**
      * Inserta un libro en la lista de libros que llevan este tag.
      * 
-     * @param libro - El libro a insertar.
+     * @param libro El libro a insertar.
      */
     public void insertarLibro(Libro libro) {
         librosTagged.insertar(new Nodo<>(libro.getTitulo(), libro));

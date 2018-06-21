@@ -46,6 +46,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
                 return balancear();
             } else {
                 hijoIzq = unElemento;
+                actualizarAltura();
                 return this;
             }
         } else if (unElemento.getEtiqueta().compareTo(etiqueta) > 0) {
@@ -55,10 +56,11 @@ public class TElementoAB<T> implements IElementoAB<T> {
                 return balancear();
             } else {
                 hijoDer = unElemento;
+                actualizarAltura();
                 return this;
             }
         } else {
-            // ya existe un elemento con la misma etiqueta.-
+            // ya existe un elemento con la misma etiqueta.
             return this;
         }
     }
@@ -238,6 +240,13 @@ public class TElementoAB<T> implements IElementoAB<T> {
         altura = 1 + Math.max(altL, altR);
     }
     
+    /**
+     * Realiza la rotacion necesaria cuando la causa del desbalance viene del 
+     * hijo izquierdo del hijo izquierdo.
+     * 
+     * @param k2 El nodo en el que se da el desbalance
+     * @return El nodo que toma el lugar de k2.
+     */
     private IElementoAB<T> rotacionLL(IElementoAB k2) {
         IElementoAB<T> k1 = k2.getHijoIzq();
         k2.setHijoIzq(k1.getHijoDer());
@@ -247,6 +256,13 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return k1;
     }
     
+    /**
+     * Realiza la rotacion necesaria cuando la causa del desbalance viene del 
+     * hijo derecho del hijo derecho.
+     * 
+     * @param k1 El nodo en el que se da el desbalance
+     * @return El nodo que toma el lugar de k1.
+     */
     private IElementoAB<T> rotacionRR(IElementoAB k1) {
         IElementoAB<T> k2 = k1.getHijoDer();
         k1.setHijoDer(k2.getHijoIzq());
@@ -256,16 +272,35 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return k2;
     }
     
+    /**
+     * Realiza la rotacion necesaria cuando la causa del desbalance viene del 
+     * hijo derecho del hijo izquierdo.
+     * 
+     * @param k3 El nodo en el que se da el desbalance
+     * @return El nodo que toma el lugar de k3.
+     */
     private IElementoAB<T> rotacionLR(IElementoAB k3) {
         k3.setHijoIzq(rotacionRR(k3.getHijoIzq()));
         return rotacionLL(k3);
     }
     
+    /**
+     * Realiza la rotacion necesaria cuando la causa del desbalance viene del 
+     * hijo izquierdo del hijo derecho.
+     * 
+     * @param k1 El nodo en el que se da el desbalance
+     * @return El nodo que toma el lugar de k1.
+     */
     private IElementoAB<T> rotacionRL(IElementoAB k1) {
         k1.setHijoDer(rotacionLL(k1.getHijoDer()));
         return rotacionRR(k1);
     }
-      
+    
+    /**
+     * Checkea si el nodo esta balanceado o no.
+     * 
+     * @return true si esta balanceado, false si no.
+     */
     private boolean isBalanceado() {
         int altHI = -1;
         if (hijoIzq != null) {
@@ -278,6 +313,12 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return Math.abs(altHD - altHI) <= 1;
     }
     
+    /**
+     * Detecta si un nodo esta desbalanceado y realiza las operaciones 
+     * necesarias para rebalancear el subarbol.
+     * 
+     * @return El subarbol rebalanceado.
+     */
     private IElementoAB<T> balancear() {
         if (!isBalanceado()) {
             int altLL = -2;
