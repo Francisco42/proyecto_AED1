@@ -181,19 +181,19 @@ public class TElementoAB<T> implements IElementoAB<T> {
   
     @Override
     public IElementoAB<T> eliminar(Comparable unaEtiqueta) {
-        if (unaEtiqueta.compareTo(this.etiqueta) < 0){
-            if(hijoIzq != null){
+        if (unaEtiqueta.compareTo(this.etiqueta) < 0) {
+            if(hijoIzq != null) {
                 hijoIzq = hijoIzq.eliminar(unaEtiqueta);
                 actualizarAltura();
-                balancear();
+                return balancear();
             }
             return this;
         }
-        if(unaEtiqueta.compareTo(etiqueta) > 0){
-            if(hijoDer != null){
+        if (unaEtiqueta.compareTo(etiqueta) > 0) {
+            if(hijoDer != null) {
                 hijoDer = hijoDer.eliminar(unaEtiqueta);
                 actualizarAltura();
-                balancear();
+                return balancear();
             }
             return this;
         }

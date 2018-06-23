@@ -135,7 +135,7 @@ public interface IElementoAB<T> {
     public int getAltura();
     
     /**
-     * Actualiza la laltura del nodo.
+     * Actualiza la altura del nodo.
      */
     public void actualizarAltura();
 }
