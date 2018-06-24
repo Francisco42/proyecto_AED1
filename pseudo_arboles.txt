@@ -137,6 +137,30 @@
 
 
 
-
+    mostrarPorListaTags(tags de tipo String[]): Lista<Libro>
+    COMIENZO
+        primerTag <- tags[0]
+        aux <- buscar(primerTag)
+        SI <aux <> nulo> ENTONCES
+            resultado <- nueva Lista
+            libros <- aux.datos.librosTagged
+            auxLibro <- libros.primero
+            MIENTRAS <auxLibro <> nulo> HACER
+                seInserta <- true
+                PARA CADA String tag EN tags
+                    SI <auxLibro.dato.tags.buscar(tag) = nulo> ENTONCES
+                        seInserta <- false
+                    FIN SI
+                FIN PARA
+                SI <seInserta> ENTONCES
+                    resultado.insertar(auxLibro.clonar)
+                FIN SI
+                auxLibro <- auxLibro.siguiente
+            FIN MIENTRAS
+            devuelve resultado
+        SI NO
+            devuelve nulo
+        FIN SI
+    FIN
 
 

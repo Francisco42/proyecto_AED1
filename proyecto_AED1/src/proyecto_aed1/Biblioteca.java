@@ -179,6 +179,22 @@ public class Biblioteca {
     }
     
     /**
+     * Muestra en pantalla todos los libros que llevan unos ciertos tags.
+     * 
+     * @param tags Los tags que se buscan.
+     */
+    public void mostrarPorListaTags(String tags) {
+        String[] listaTags = tags.split(",");
+        Lista<Libro> listaAux = arbolTags.mostrarPorListaTags(listaTags);
+        if (listaAux != null) {
+            listaAux.imprimirDatos();
+            if (listaAux.esVacia()) {
+                System.out.println("No se encontraron libros que cumplan con el criterio");
+            }
+        }
+    }
+    
+    /**
      * Muestra toda la informacion de un libro, incluyendo sus autores y tags.
      * 
      * @param titulo El titulo del libro que se busca.

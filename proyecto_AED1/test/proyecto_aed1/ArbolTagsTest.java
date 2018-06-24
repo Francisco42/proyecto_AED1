@@ -107,5 +107,51 @@ public class ArbolTagsTest {
         
         assertTrue(expResult3.equals(result3));
     }
+
+    /**
+     * Test of mostrarPorListaTags method, of class ArbolTags.
+     */
+    @Test
+    public void testMostrarPorListaTags() {
+        System.out.println("mostrarPorListaTags");
+
+        l1.insertarTag(t1);
+        l1.insertarTag(t2);
+        l2.insertarTag(t1);
+        l3.insertarTag(t1);
+        l4.insertarTag(t2);
+        l5.insertarTag(t2);
+        l6.insertarTag(t3);
+        
+        t1.insertarLibro(l1);
+        t1.insertarLibro(l2);
+        t1.insertarLibro(l3);
+        t2.insertarLibro(l1);
+        t2.insertarLibro(l4);
+        t2.insertarLibro(l5);
+        t3.insertarLibro(l6);
+        
+        //
+        
+        Lista<Libro> expResult1 = new Lista<>();
+        
+        String[] tags1 = {"Fantasia", "Suspenso"};
+        
+        Lista<Libro> result1 = instance.mostrarPorListaTags(tags1);
+        
+        assertTrue(expResult1.equals(result1));
+        
+        //
+        
+        Lista<Libro> expResult2 = new Lista<>();
+        
+        expResult2.insertar(new Nodo("a", l1));
+        
+        String[] tags2 = {"Suspenso", "Comedia"};
+        
+        Lista<Libro> result2 = instance.mostrarPorListaTags(tags2);
+        
+        assertTrue(expResult2.equals(result2));
+    }
     
 }

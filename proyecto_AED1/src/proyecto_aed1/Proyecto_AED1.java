@@ -58,11 +58,12 @@ public class Proyecto_AED1 {
                 + "3 - Buscar un libro por ISBN13\n"
                 + "4 - Buscar libros por autor\n"
                 + "5 - Buscar libros por tag\n"
-                + "6 - Buscar las ultimas ediciones a partir de una año\n"
-                + "7 - Mostrar los detalles de un libro en particular (a partir de su titulo)\n"
-                + "8 - Eliminar un autor de la biblioteca y todos sus libros asociados\n"
-                + "9 - Eliminar un tag de la biblioteca y removerlo de todos sus libros asociados\n"
-                + "10 - Salir del programa\n";
+                + "6 - Buscar todos los libros que tienen un conjunto de tags en comun\n"
+                + "7 - Buscar las ultimas ediciones a partir de una año\n"
+                + "8 - Mostrar los detalles de un libro en particular (a partir de su titulo)\n"
+                + "9 - Eliminar un autor de la biblioteca y todos sus libros asociados\n"
+                + "10 - Eliminar un tag de la biblioteca y removerlo de todos sus libros asociados\n"
+                + "11 - Salir del programa\n";
         
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         boolean salir = false;
@@ -108,36 +109,43 @@ public class Proyecto_AED1 {
                         System.out.println("");
                         biblioteca.mostrarPorTag(linea2);
                         break;
-
+                        
                     case "6":
+                        System.out.println("Ingrese los tags a buscar separados por una coma");
+                        linea2 = buffer.readLine();
+                        System.out.println("");
+                        biblioteca.mostrarPorListaTags(linea2);
+                        break;
+
+                    case "7":
                         System.out.println("Ingrese el año a buscar");
                         linea2 = buffer.readLine();
                         System.out.println("");
                         biblioteca.mostrarUltimasEdiciones(Integer.parseInt(linea2));
                         break;
 
-                    case "7":
+                    case "8":
                         System.out.println("Ingrese el titulo del libro a buscar");
                         linea2 = buffer.readLine();
                         System.out.println("");
                         biblioteca.mostrarDetalles(linea2);
                         break;
 
-                    case "8":
+                    case "9":
                         System.out.println("Ingrese el autor a eliminar");
                         linea2 = buffer.readLine();
                         System.out.println("");
                         biblioteca.eliminarAutor(linea2);
                         break;
                         
-                    case "9":
+                    case "10":
                         System.out.println("Ingrese el tag a eliminar");
                         linea2 = buffer.readLine();
                         System.out.println("");
                         biblioteca.eliminarTag(linea2);
                         break;
 
-                    case "10":
+                    case "11":
                         salir = true;
                         break;
 

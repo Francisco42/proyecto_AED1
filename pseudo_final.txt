@@ -90,6 +90,29 @@
 
 
 
+    mostrarPorListaTags(tags de tipo String[])
+    COMIENZO
+        primerTag <- tags[0]
+        aux <- buscar(primerTag)
+        SI <aux <> nulo> ENTONCES
+            libros <- aux.dato.librosTagged
+            auxLibro <- libros.primero
+            MIENTRAS <auxLibro <> nulo> HACER
+                seImprime <- true
+                PARA CADA String tag EN tags
+                    SI <auxLibro.dato.tags.buscar(tag) = nulo> ENTONCES
+                        seImprime <- false
+                    FIN SI
+                FIN PARA
+                SI <seImprime> ENTONCES
+                    auxLibro.imprimir
+                FIN SI
+                auxLibro <- auxLibro.siguiente
+            FIN MIENTRAS
+        FIN SI
+    FIN
+
+
 
     eliminarTag(tag de tipo String)
     COMIENZO
