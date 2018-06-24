@@ -87,5 +87,20 @@
 	FIN MIENTRAS
 	listaAutores.eliminar(autor)
     FIN
+
+
+
+
+    eliminarTag(tag de tipo String)
+    COMIENZO
+	tagAEliminar <- listaTags.buscar(tag).dato
+	librosAUntaggear <- tagAEliminar.librosTagged
+	aux <- librosAUntaggear.primero
+	MIENTRAS <aux <> nulo>
+	    aux.tags.eliminar(tag)
+	    aux <- aux.siguiente
+	FIN MIENTRAS
+	listaTags.eliminar(tag)
+    FIN
     
 
